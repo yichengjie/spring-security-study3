@@ -7,6 +7,9 @@
     <groupId>com.yicj.security</groupId>
     <artifactId>spring-security-study3</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>basic-introduction</module>
+    </modules>
 
     <packaging>pom</packaging>
 
@@ -36,10 +39,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
