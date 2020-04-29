@@ -32,6 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
             .and()
         .csrf().disable()
+        .httpBasic()
+            .and()
         .formLogin()
             //应用AutheticationDetailsSource
             .authenticationDetailsSource(myAuthenticationDetailsSource)
