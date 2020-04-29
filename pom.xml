@@ -10,6 +10,7 @@
     <modules>
         <module>basic-introduction</module>
         <module>basic-middle</module>
+		<module>basic-advance</module>
     </modules>
 
     <packaging>pom</packaging>
