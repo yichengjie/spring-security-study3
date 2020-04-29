@@ -1,4 +1,4 @@
-package com.yicj.config;
+package com.yicj.vercode;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

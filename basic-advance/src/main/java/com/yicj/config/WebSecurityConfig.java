@@ -1,9 +1,11 @@
 package com.yicj.config;
 
+import com.yicj.vercode.MyAuthenticationFailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails>  authenticationDetailsSource ;
+    private AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails>  myAuthenticationDetailsSource ;
 
     @Autowired
     private AuthenticationProvider authenticationProvider ;
@@ -32,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().disable()
         .formLogin()
             //应用AutheticationDetailsSource
-            .authenticationDetailsSource(authenticationDetailsSource)
+            .authenticationDetailsSource(myAuthenticationDetailsSource)
             .loginPage("/login")
             .loginProcessingUrl("/auth/form")
             .permitAll()
@@ -40,11 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    //这里可以配置用户名密码信息
-    /*@Override
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //super.configure(auth);
-        auth.inMemoryAuthentication()
-            .withUser("user").password("123").roles("USER") ;
-    }*/
+        auth.authenticationProvider(authenticationProvider) ;
+    }
 }
