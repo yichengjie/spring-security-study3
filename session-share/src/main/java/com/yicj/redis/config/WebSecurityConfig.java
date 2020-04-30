@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import java.io.PrintWriter;
 
 @Configuration
 @EnableWebSecurity
@@ -18,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/admin/api/**").hasRole("ADMIN")
                 .antMatchers("/user/api/**").hasRole("USER")
-                .antMatchers("/app/api/**").permitAll()
+                .antMatchers("/app/api/**","/redis/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
