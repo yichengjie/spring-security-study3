@@ -11,6 +11,7 @@
         <module>basic-introduction</module>
         <module>basic-middle</module>
 		<module>basic-advance</module>
+		<module>session-share</module>
     </modules>
 
     <packaging>pom</packaging>
