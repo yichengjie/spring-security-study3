@@ -3,13 +3,11 @@ package com.yicj.redis.config;
 import com.yicj.redis.component.RedisSessionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1900)
 public class MvcConfig extends WebMvcConfigurationSupport {
 
     @Autowired

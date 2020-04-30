@@ -24,9 +24,13 @@ public class LoginController {
     public ReturnData login(HttpServletRequest request, String username, String password) {
         User user = userService.findUserByAccountAndPassword(username, password);
         if (user != null) {
+            //HttpSession session = request.getSession();
+            //session.setAttribute("loginUserId", user.getUserId());
+            //redisTemplate.opsForValue().set("loginUser:" + user.getUserId(), session.getId());
             HttpSession session = request.getSession();
             session.setAttribute("loginUserId", user.getUserId());
             redisTemplate.opsForValue().set("loginUser:" + user.getUserId(), session.getId());
+
             return new ReturnData(StatusCode.REQUEST_SUCCESS, user, "登录成功！");
         } else {
             throw new MyException(StatusCode.ACCOUNT_OR_PASSWORD_ERROR, "账户名或密码错误！");
