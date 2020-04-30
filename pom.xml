@@ -13,6 +13,7 @@
 		<module>basic-advance</module>
 		<module>session-share</module>
         <module>redis-study</module>
+		<module>session-share-security</module>
     </modules>
 
     <packaging>pom</packaging>
