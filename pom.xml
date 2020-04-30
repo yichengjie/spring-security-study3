@@ -12,6 +12,7 @@
         <module>basic-middle</module>
 		<module>basic-advance</module>
 		<module>session-share</module>
+        <module>redis-study</module>
     </modules>
 
     <packaging>pom</packaging>
