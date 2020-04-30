@@ -16,15 +16,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/admin/api/**").hasRole("ADMIN")
             .antMatchers("/user/api/**").hasRole("USER")
-            .antMatchers("/app/api/**","/captcha.jpg","/favicon.ico").permitAll()
+            .antMatchers("/app/api/**","/favicon.ico").permitAll()
             .anyRequest().authenticated()
             .and()
         .csrf().disable()
-        .httpBasic()
-            .and()
         .formLogin()
-            .loginPage("/login")
-            .loginProcessingUrl("/auth/form")
             .permitAll()
             .failureHandler(new MyAuthenticationFailureHandler()) ;
 
