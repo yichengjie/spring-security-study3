@@ -12,6 +12,7 @@
         <module>basic-middle</module>
 		<module>basic-advance</module>
 		<module>session-share</module>
+		<module>session-share2</module>
         <module>redis-study</module>
 		<module>session-share-security</module>
     </modules>
@@ -44,10 +45,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
