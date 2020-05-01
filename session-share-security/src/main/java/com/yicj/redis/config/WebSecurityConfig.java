@@ -20,6 +20,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //@Autowired
     //private SpringSessionBackedSessionRegistry redisSessionRegistry ;
 
+    //注意这个不能放在HttpSessionConfig配置类中，否则会报错提示循环依赖
+    @Autowired
+    private FindByIndexNameSessionRepository sessionRepository ;
+
+    //SpringSessionBackedSessionRegistry是session为Spring Security提供的
+    //用于在集群环境下控制会话并发的会话注册实现类
+    @Bean
+    public SpringSessionBackedSessionRegistry sessionRegistry(){
+        return new SpringSessionBackedSessionRegistry(sessionRepository) ;
+    }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -38,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionManagement()
             .maximumSessions(1)
             //使用session提供的会话注册表
-            //.sessionRegistry(redisSessionRegistry)
+            .sessionRegistry(sessionRegistry())
         ;
     }
 
