@@ -29,6 +29,7 @@ public class MvcConfig extends WebMvcConfigurationSupport {
         super.addViewControllers(registry);
         //registry.addViewController("/home").setViewName("home");
         //registry.addViewController("/").setViewName("home");
+        registry.addViewController("/loginPage").setViewName("login");
     }
 
 
