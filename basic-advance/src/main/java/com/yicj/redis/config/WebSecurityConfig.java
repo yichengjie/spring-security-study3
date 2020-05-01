@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import javax.servlet.http.HttpServletRequest;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -35,9 +35,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        .httpBasic()
 //            .and()
         .formLogin()
-            //应用AutheticationDetailsSource
+            //应用AuthenticationDetailsSource
             .authenticationDetailsSource(myAuthenticationDetailsSource)
-            .loginPage("/login")
+            // 需要身份认证时跳转的地址
+            .loginPage("/authentication/require")
             .loginProcessingUrl("/auth/form")
             .permitAll()
             .failureHandler(new MyAuthenticationFailureHandler())
