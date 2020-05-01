@@ -15,6 +15,7 @@
 		<module>session-share2</module>
         <module>redis-study</module>
 		<module>session-share-security</module>
+        <module>property-study</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import javax.servlet.http.HttpServletRequest;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -32,15 +32,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
             .and()
         .csrf().disable()
-        .httpBasic()
-            .and()
+//        .httpBasic()
+//            .and()
         .formLogin()
             //应用AutheticationDetailsSource
             .authenticationDetailsSource(myAuthenticationDetailsSource)
             .loginPage("/login")
             .loginProcessingUrl("/auth/form")
             .permitAll()
-            .failureHandler(new MyAuthenticationFailureHandler()) ;
+            .failureHandler(new MyAuthenticationFailureHandler())
+        ;
 
     }
 
