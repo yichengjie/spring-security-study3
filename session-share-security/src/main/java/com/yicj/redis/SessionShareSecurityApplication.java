@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //https://blog.csdn.net/xjj1040249553/article/details/82658889
 @SpringBootApplication
-public class SessionShareApplication {
+public class SessionShareSecurityApplication {
     public static void main(String[] args)  {
         //Basic dXNlcjoxMjM=
-        SpringApplication.run(SessionShareApplication.class, args);
+        SpringApplication.run(SessionShareSecurityApplication.class, args);
     }
 }

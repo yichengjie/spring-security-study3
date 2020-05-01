@@ -20,29 +20,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SpringSessionBackedSessionRegistry redisSessionRegistry ;
 
-    @Autowired
-    private FindByIndexNameSessionRepository sessionRepository ;
-
-    //提供Redis连接，默认localhost:6379
-    @Bean
-    public RedisConnectionFactory connectionFactory(){
-        return new JedisConnectionFactory() ;
-    }
-
-
-    //HttpSession 的事件监听，改为session提供的会话注册表
-    @Bean
-    public HttpSessionEventPublisher httpSessionEventPublisher(){
-        return new HttpSessionEventPublisher() ;
-    }
-
-    //SpringSessionBackedSessionRegistry是session为Spring Security提供的
-    //用于在集群环境下控制会话并发的会话注册实现类
-    @Bean
-    public SpringSessionBackedSessionRegistry sessionRegistry(){
-
-        return new SpringSessionBackedSessionRegistry(sessionRepository) ;
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -61,7 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionManagement()
             .maximumSessions(1)
             //使用session提供的会话注册表
-            .sessionRegistry(redisSessionRegistry);
+            //.sessionRegistry(redisSessionRegistry)
+        ;
     }
 
 }
