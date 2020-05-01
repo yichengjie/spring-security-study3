@@ -17,13 +17,14 @@ import org.springframework.session.security.SpringSessionBackedSessionRegistry;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //@Autowired
-    //private SpringSessionBackedSessionRegistry redisSessionRegistry ;
+    @Autowired
+    private SpringSessionBackedSessionRegistry redisSessionRegistry ;
 
     //注意这个不能放在HttpSessionConfig配置类中，否则会报错提示循环依赖
     @Autowired
     private FindByIndexNameSessionRepository sessionRepository ;
 
+    //注意这个不能放在HttpSessionConfig配置类中，否则会报错提示循环依赖
     //SpringSessionBackedSessionRegistry是session为Spring Security提供的
     //用于在集群环境下控制会话并发的会话注册实现类
     @Bean
@@ -49,7 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionManagement()
             .maximumSessions(1)
             //使用session提供的会话注册表
-            .sessionRegistry(sessionRegistry())
+            //.sessionRegistry(sessionRegistry())
+            .sessionRegistry(redisSessionRegistry)
         ;
     }
 
