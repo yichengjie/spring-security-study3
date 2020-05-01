@@ -17,8 +17,8 @@ import org.springframework.session.security.SpringSessionBackedSessionRegistry;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private SpringSessionBackedSessionRegistry redisSessionRegistry ;
+    //@Autowired
+    //private SpringSessionBackedSessionRegistry redisSessionRegistry ;
 
 
     @Override
