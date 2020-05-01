@@ -17,9 +17,6 @@ import org.springframework.session.security.SpringSessionBackedSessionRegistry;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private SpringSessionBackedSessionRegistry redisSessionRegistry ;
-
     //注意这个不能放在HttpSessionConfig配置类中，否则会报错提示循环依赖
     @Autowired
     private FindByIndexNameSessionRepository sessionRepository ;
@@ -31,6 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public SpringSessionBackedSessionRegistry sessionRegistry(){
         return new SpringSessionBackedSessionRegistry(sessionRepository) ;
     }
+
+    //注意这里一定要放在sessionRegistry()方法后面，否则会报错
+    // 将新的会话注册表提供给Spring Security
+    @Autowired
+    private SpringSessionBackedSessionRegistry redisSessionRegistry;
 
 
     @Override
