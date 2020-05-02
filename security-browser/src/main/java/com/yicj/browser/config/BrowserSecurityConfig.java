@@ -2,6 +2,7 @@ package com.yicj.browser.config;
 
 import com.yicj.browser.handler.MyAuthenticationFailureHandler;
 import com.yicj.browser.handler.MyAuthenticationSuccessHandler;
+import com.yicj.core.properties.SecurityConstants;
 import com.yicj.core.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -25,8 +26,8 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginPage("/authentication/require")
-                .loginProcessingUrl("/authentication/form")
+                .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
+                .loginProcessingUrl(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_FORM)
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(myAuthenticationFailureHandler)
                 .and()
