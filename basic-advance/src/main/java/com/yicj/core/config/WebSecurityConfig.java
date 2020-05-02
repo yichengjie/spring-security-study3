@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             //应用AuthenticationDetailsSource
             .authenticationDetailsSource(myAuthenticationDetailsSource)
             // 需要身份认证时跳转的地址
-            .loginPage("/authentication/require")
+            .loginPage("/loginPage")
             .loginProcessingUrl("/auth/form")
             .permitAll()
             .failureHandler(new MyAuthenticationFailureHandler())
