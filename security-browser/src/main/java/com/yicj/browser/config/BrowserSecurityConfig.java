@@ -1,6 +1,7 @@
 package com.yicj.browser.config;
 
 import com.yicj.browser.handler.MyAuthenticationFailureHandler;
+import com.yicj.browser.handler.MyAuthenticationSuccessHandler;
 import com.yicj.core.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -16,24 +17,27 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     private MyAuthenticationFailureHandler myAuthenticationFailureHandler ;
 
     @Autowired
+    private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler ;
+
+    @Autowired
     private SecurityProperties securityProperties ;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //super.configure(http);
-        http.authorizeRequests()
-            .antMatchers("/admin/api/**").hasRole("ADMIN")
-                .antMatchers("/user/api/**").hasRole("USER")
-                .antMatchers("/app/api/**","/favicon.ico",securityProperties.getBrowser().getLoginPage()).permitAll()
-                .anyRequest().authenticated()
-                .and()
-            .csrf().disable()
-            .formLogin()
-                // 需要身份认证时跳转的地址
-                .loginPage("/authentication/require")
-                .loginProcessingUrl("/auth/form")
-                .permitAll()
+        http.formLogin()
+                .loginProcessingUrl("/authentication/require")
+                .loginProcessingUrl("/authentication/form")
+                .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(myAuthenticationFailureHandler)
-            ;
+                .and()
+            .authorizeRequests()
+                .antMatchers("/authentication/require",
+                        securityProperties.getBrowser().getLoginPage())
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+            .csrf().disable() ;
+
     }
 }
