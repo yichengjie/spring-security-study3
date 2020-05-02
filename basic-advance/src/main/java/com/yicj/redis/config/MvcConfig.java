@@ -27,8 +27,9 @@ public class MvcConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addViewControllers(ViewControllerRegistry registry) {
         super.addViewControllers(registry);
-        //registry.addViewController("/home").setViewName("home");
-        //registry.addViewController("/").setViewName("home");
+        registry.addViewController("/home.html").setViewName("home");
+        registry.addViewController("/home").setViewName("home");
+        registry.addViewController("/").setViewName("home");
         registry.addViewController("/loginPage").setViewName("login");
     }
 
