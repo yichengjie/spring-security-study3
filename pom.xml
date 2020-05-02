@@ -20,6 +20,7 @@
         <module>security-app</module>
         <module>security-browser</module>
         <module>security-demo</module>
+        <module>security-demo2</module>
         <module>static-study</module>
     </modules>
 
