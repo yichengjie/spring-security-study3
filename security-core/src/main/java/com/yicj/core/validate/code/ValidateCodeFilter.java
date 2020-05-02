@@ -5,7 +5,6 @@ import com.yicj.core.properties.SecurityProperties;
 import com.yicj.core.validate.code.image.ImageCode;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -70,7 +68,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
     }
 
     private void validate(ServletWebRequest request) throws ServletRequestBindingException {
-        ImageCode codeInSession = (ImageCode) sessionStrategy.getAttribute(request,ValidateCodeController.SESSION_KEY_IMAGE_CODE) ;
+        ImageCode codeInSession = (ImageCode) sessionStrategy.getAttribute(request,ValidateCodeController.SESSION_KEY_CODE) ;
         String codeInRequest = ServletRequestUtils.getStringParameter(request.getRequest(),"imageCode") ;
 
         if (StringUtils.isBlank(codeInRequest)){
@@ -80,14 +78,14 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
             throw new ValidateCodeException("验证码不存在") ;
         }
         if (codeInSession.isExpried()){
-            sessionStrategy.removeAttribute(request,ValidateCodeController.SESSION_KEY_IMAGE_CODE);
+            sessionStrategy.removeAttribute(request,ValidateCodeController.SESSION_KEY_CODE);
             throw new ValidateCodeException("验证码已过期") ;
         }
 
         if(!StringUtils.equals(codeInRequest,codeInSession.getCode())){
             throw new ValidateCodeException("验证码不匹配") ;
         }
-        sessionStrategy.removeAttribute(request,ValidateCodeController.SESSION_KEY_IMAGE_CODE);
+        sessionStrategy.removeAttribute(request,ValidateCodeController.SESSION_KEY_CODE);
     }
 
     public AuthenticationFailureHandler getAuthenticationFailureHandler() {
