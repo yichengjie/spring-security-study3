@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -25,14 +25,15 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginProcessingUrl("/authentication/require")
+                .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(myAuthenticationFailureHandler)
                 .and()
             .authorizeRequests()
                 .antMatchers("/authentication/require",
-                        securityProperties.getBrowser().getLoginPage())
+                        securityProperties.getBrowser().getLoginPage(),
+                        "/code/image")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
