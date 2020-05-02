@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -27,9 +27,10 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter() ;
         validateCodeFilter.setAuthenticationFailureHandler(myAuthenticationFailureHandler);
+        validateCodeFilter.setSecurityProperties(securityProperties);
+        validateCodeFilter.afterPropertiesSet();
 
         http
             .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)

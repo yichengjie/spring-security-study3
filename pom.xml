@@ -22,6 +22,7 @@
         <module>security-demo</module>
         <module>security-demo2</module>
         <module>static-study</module>
+		<module>remember-study</module>
     </modules>
 
     <packaging>pom</packaging>

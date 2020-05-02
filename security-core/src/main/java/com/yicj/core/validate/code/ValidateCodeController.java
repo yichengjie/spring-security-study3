@@ -19,7 +19,7 @@ public class ValidateCodeController {
 	public static final String SESSION_KEY_IMAGE_CODE = "SESSION_KEY_IMAGE_CODE";
 
 	@Autowired
-	private ImageCodeGenerator imageCodeGenerator ;
+	private ValidateCodeGenerator imageCodeGenerator ;
 
 	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy() ;
 
@@ -33,6 +33,7 @@ public class ValidateCodeController {
 	public void createCode(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ServletWebRequest servletWebRequest = new ServletWebRequest(request) ;
+		//ImageCode imageCode = imageCodeGenerator.generate(servletWebRequest);
 		ImageCode imageCode = imageCodeGenerator.generate(servletWebRequest);
 		sessionStrategy.setAttribute(servletWebRequest,SESSION_KEY_IMAGE_CODE,imageCode);
 		ImageIO.write(imageCode.getImage(),"JPEG",response.getOutputStream()) ;

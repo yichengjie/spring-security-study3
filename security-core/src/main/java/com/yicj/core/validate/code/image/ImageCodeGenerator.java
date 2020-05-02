@@ -8,18 +8,12 @@ import java.util.Random;
 
 import com.yicj.core.properties.SecurityProperties;
 import com.yicj.core.validate.code.ValidateCodeGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
 
-@Component
 public class ImageCodeGenerator implements ValidateCodeGenerator {
-	/**
-	 * 系统配置
-	 */
-	@Autowired
+
 	private SecurityProperties securityProperties;
 	
 
@@ -79,5 +73,13 @@ public class ImageCodeGenerator implements ValidateCodeGenerator {
 		int g = fc + random.nextInt(bc - fc);
 		int b = fc + random.nextInt(bc - fc);
 		return new Color(r, g, b);
+	}
+
+	public SecurityProperties getSecurityProperties() {
+		return securityProperties;
+	}
+
+	public void setSecurityProperties(SecurityProperties securityProperties) {
+		this.securityProperties = securityProperties;
 	}
 }
