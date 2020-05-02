@@ -1,7 +1,9 @@
-package com.yicj.controller;
+package com.yicj.browser.controller;
 
 import com.yicj.core.model.SimpleResponse;
+import com.yicj.core.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -19,6 +21,9 @@ import java.io.IOException;
 @RestController
 @Slf4j
 public class BrowserSecurityController {
+
+    @Autowired
+    private SecurityProperties securityProperties ;
 
     private RequestCache requestCache = new HttpSessionRequestCache() ;
 
@@ -38,7 +43,7 @@ public class BrowserSecurityController {
             String targetUrl = savedRequest.getRedirectUrl();
             log.info("引发跳转的请求是: {}",targetUrl);
             if (StringUtils.endsWithIgnoreCase(targetUrl,".html")){
-                redirectStrategy.sendRedirect(request,response,"/loginPage") ;
+                redirectStrategy.sendRedirect(request,response,securityProperties.getBrowser().getLoginPage()) ;
             }
         }
         return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页面");
