@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -26,9 +26,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .loginProcessingUrl("/login")
             .permitAll()
             .and()
-//        .rememberMe()
-//            .userDetailsService(userDetailsService)
-//            .and()
+        .rememberMe()
+            .userDetailsService(userDetailsService)
+            .and()
         .csrf().disable();
     }
 
