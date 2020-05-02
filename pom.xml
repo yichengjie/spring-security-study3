@@ -20,7 +20,7 @@
         <module>security-app</module>
         <module>security-browser</module>
         <module>security-demo</module>
-        <module>thymeleaf-study</module>
+        <module>static-study</module>
     </modules>
 
     <packaging>pom</packaging>
