@@ -3,6 +3,8 @@ package com.yicj.core.authentication.mobile;
 
 import com.yicj.core.handler.MyAuthenticationFailureHandler;
 import com.yicj.core.handler.MyAuthenticationSuccessHandler;
+import com.yicj.core.properties.SecurityProperties;
+import com.yicj.core.validate.code.SmsCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
@@ -23,8 +25,23 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
     @Autowired
     private UserDetailsService userDetailsService ;
 
+    @Autowired
+    private SecurityProperties securityProperties ;
+
+    @Autowired
+    private MyAuthenticationFailureHandler myAuthenticationFailureHandler ;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
+
+        SmsCodeFilter smsCodeFilter = new SmsCodeFilter() ;
+        smsCodeFilter.setAuthenticationFailureHandler(myAuthenticationFailureHandler);
+        smsCodeFilter.setSecurityProperties(securityProperties);
+        smsCodeFilter.afterPropertiesSet();
+
+        //配置短信验证码过滤器
+        http.addFilterBefore(smsCodeFilter, UsernamePasswordAuthenticationFilter.class) ;
+
         //1. 实例化并配置filter
         SmsCodeAuthenticationFilter smsAuthenticationFilter = new SmsCodeAuthenticationFilter() ;
         //   1.1 filter配置AuthenticationManager
