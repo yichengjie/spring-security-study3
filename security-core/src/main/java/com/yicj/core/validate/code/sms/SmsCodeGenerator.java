@@ -19,7 +19,7 @@ public class SmsCodeGenerator implements ValidateCodeGenerator {
         //验证码长度
         int length = securityProperties.getCode().getSms().getLength();
         //验证码
-        String code = RandomStringUtils.random(length);
+        String code = RandomStringUtils.randomNumeric(length);
         //过期时间
         int expireIn = securityProperties.getCode().getSms().getExpireIn();
         return new ValidateCode(code,expireIn);

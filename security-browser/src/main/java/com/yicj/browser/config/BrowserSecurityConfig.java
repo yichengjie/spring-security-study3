@@ -1,9 +1,11 @@
 package com.yicj.browser.config;
 
-import com.yicj.browser.handler.MyAuthenticationFailureHandler;
-import com.yicj.browser.handler.MyAuthenticationSuccessHandler;
+import com.yicj.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.yicj.core.handler.MyAuthenticationFailureHandler;
+import com.yicj.core.handler.MyAuthenticationSuccessHandler;
 import com.yicj.core.properties.SecurityConstants;
 import com.yicj.core.properties.SecurityProperties;
+import com.yicj.core.validate.code.SmsCodeFilter;
 import com.yicj.core.validate.code.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -25,6 +27,9 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityProperties securityProperties ;
 
+    @Autowired
+    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig ;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter() ;
@@ -32,7 +37,14 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         validateCodeFilter.setSecurityProperties(securityProperties);
         validateCodeFilter.afterPropertiesSet();
 
-        http
+
+        SmsCodeFilter smsCodeFilter = new SmsCodeFilter() ;
+        smsCodeFilter.setAuthenticationFailureHandler(myAuthenticationFailureHandler);
+        smsCodeFilter.setSecurityProperties(securityProperties);
+        smsCodeFilter.afterPropertiesSet();
+
+
+        http.addFilterBefore(smsCodeFilter, UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
             .formLogin()
                 .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
@@ -44,12 +56,15 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 // 登录页面，和验证码页面不需要权限验证
                 .antMatchers(securityProperties.getBrowser().getLoginPage(),
-                        "/code/image")
+                        "/code/*")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-            .csrf().disable() ;
+            .csrf().disable()
+            //短信验证相关配置
+            .apply(smsCodeAuthenticationSecurityConfig)
+        ;
 
     }
 }

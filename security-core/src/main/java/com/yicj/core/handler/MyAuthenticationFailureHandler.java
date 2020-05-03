@@ -1,4 +1,4 @@
-package com.yicj.browser.handler;
+package com.yicj.core.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yicj.core.model.SimpleResponse;

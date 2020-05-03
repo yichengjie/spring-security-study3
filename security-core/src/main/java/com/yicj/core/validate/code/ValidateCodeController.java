@@ -14,7 +14,7 @@ import java.util.Map;
 @RestController
 @Slf4j
 public class ValidateCodeController {
-	public static final String SESSION_KEY_CODE = "SESSION_KEY_IMAGE_CODE";
+	//public static final String SESSION_KEY_PREFIX = "SESSION_KEY_PREFIX_";
 
 	@Autowired
 	private Map<String,ValidateCodeProcessor> validateCodeProcessorMap ;
