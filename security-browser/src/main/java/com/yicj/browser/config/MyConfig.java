@@ -17,7 +17,7 @@ public class MyConfig {
     @Autowired
     private DataSource dataSource ;
 
-    @Bean
+    /*@Bean
     public UserDetailsService userDetailsService(){
         JdbcUserDetailsManager manager = new JdbcUserDetailsManager() ;
         manager.setDataSource(dataSource);
@@ -28,8 +28,7 @@ public class MyConfig {
             manager.createUser(User.withUsername("admin").password("123").roles("USER","ADMIN").build());
         }
         return manager ;
-    }
-
+    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder(){
