@@ -2,19 +2,12 @@ package com.yicj.browser.config;
 
 import com.yicj.core.authentication.AbstractChannelSecurityConfig;
 import com.yicj.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
-import com.yicj.core.handler.MyAuthenticationFailureHandler;
-import com.yicj.core.handler.MyAuthenticationSuccessHandler;
-import com.yicj.core.properties.SecurityConstants;
 import com.yicj.core.properties.SecurityProperties;
-import com.yicj.core.validate.code.SmsCodeFilter;
-import com.yicj.core.validate.code.ValidateCodeFilter;
 import com.yicj.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
