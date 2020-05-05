@@ -24,6 +24,7 @@
         <module>static-study</module>
 		<module>remember-study</module>
         <module>oauth-github</module>
+        <module>oauth-qq</module>
     </modules>
 
     <packaging>pom</packaging>
