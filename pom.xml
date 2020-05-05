@@ -23,6 +23,7 @@
         <module>security-demo2</module>
         <module>static-study</module>
 		<module>remember-study</module>
+        <module>oauth-github</module>
     </modules>
 
     <packaging>pom</packaging>
