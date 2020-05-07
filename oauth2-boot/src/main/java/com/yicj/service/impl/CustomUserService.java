@@ -21,6 +21,7 @@ public class CustomUserService implements UserDetailsService {
 
     @Autowired
     SysUserRepository sysUserRepository ;
+
     @Autowired
     PermissionService permissionService ;
 
