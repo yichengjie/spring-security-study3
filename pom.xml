@@ -25,6 +25,7 @@
 		<module>remember-study</module>
         <module>oauth-github</module>
         <module>oauth-qq</module>
+        <module>oauth2-boot</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -23,8 +23,6 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-
-
         <dependency>
             <groupId>com.yicj.security</groupId>
             <artifactId>security-core</artifactId>
