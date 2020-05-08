@@ -11,13 +11,13 @@
 
     <script>
         // fill in your cliend_id
-        const client_id = '100550231';
+        let client_id = '100550231';
 
-        const authorize_uri = 'https://graph.qq.com/oauth2.0/authorize';
+        let authorize_uri = 'https://graph.qq.com/oauth2.0/authorize';
 
-        const redirect_uri = 'http://www.pinzhi365.com/qqLogin/callback.do&scope=test';
+        let redirect_uri = 'http://www.pinzhi365.com/qqLogin/callback.do&scope=test';
 
-        const link = document.getElementById('login');
+        let link = document.getElementById('login');
 
         link.href = `${authorize_uri}?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}`;
     </script>

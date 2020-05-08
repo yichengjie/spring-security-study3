@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class QQOauthApplication {
+public class SpringSocialQQApplication {
 
     public static void main(String[] args) {
-       SpringApplication.run(QQOauthApplication.class, args) ;
+       SpringApplication.run(SpringSocialQQApplication.class, args) ;
     }
 
 }
