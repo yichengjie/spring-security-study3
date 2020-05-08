@@ -6,7 +6,6 @@
 2.通过授权码获取Access Token
   模板：   https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=[YOUR_APP_ID]&client_secret=[YOUR_APP_Key]&code=[The_AUTHORIZATION_CODE]&state=[The_CLIENT_STATE]&redirect_uri=[YOUR_REDIRECT_URI]
   真实：   https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=100550231&client_secret=69b6ab57b22f3c2fe6a6149274e3295e&code=2A81DD84BE75394DA62FC170ED30C2EB&state=test&redirect_uri=http://www.pinzhi365.com/qqLogin/callback.do
-          https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=100550231&client_secret=69b6ab57b22f3c2fe6a6149274e3295e&code=5D10770705F91DB8DB99024F771E0914&state=test&redirect_uri=http://www.pinzhi365.com/qqLogin/callback.do
   返回值： access_token=8F0444C9F9E5E5048332013A20AB631F&expires_in=7776000&refresh_token=727BF0AE325EE0708898B744D0A4DC91
 
 
