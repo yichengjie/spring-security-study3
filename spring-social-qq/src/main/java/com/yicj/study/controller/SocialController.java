@@ -1,5 +1,6 @@
 package com.yicj.study.controller;
 
+import com.yicj.study.config.SocialConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.ProviderSignInUtils;
@@ -13,7 +14,7 @@ public class SocialController {
     @Autowired
     private ProviderSignInUtils providerSignInUtils ;
 
-    @GetMapping("/register")
+    @GetMapping(SocialConfig.REGISTER_URI)
     public String socialRegister(ServletWebRequest  request){
         // 通过request对象获取Connect
         Connection<?> connection = providerSignInUtils.getConnectionFromSession(request);

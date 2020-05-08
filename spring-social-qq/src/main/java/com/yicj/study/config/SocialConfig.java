@@ -20,6 +20,8 @@ import javax.sql.DataSource;
 @EnableSocial
 public class SocialConfig extends SocialConfigurerAdapter {
 
+    public static final String REGISTER_URI = "/register";
+
     @Autowired
     private DataSource dataSource;
 
@@ -29,7 +31,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
     //申明自定义的SpringSocialConfigurer
     @Bean
     public SpringSocialConfigurer socialConfigurer(){
-        return new CommonSpringSocialConfigurer("/oauth","register") ;
+        return new CommonSpringSocialConfigurer("/oauth", REGISTER_URI) ;
     }
 
 
