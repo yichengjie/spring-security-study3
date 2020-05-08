@@ -1,4 +1,4 @@
-package com.yicj.study.connect;
+package com.yicj.study.component;
 
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;

@@ -26,6 +26,7 @@
         <module>oauth-github</module>
         <module>oauth-qq</module>
         <module>spring-social-qq</module>
+        <module>spring-social-qq2</module>
         <module>oauth2-boot</module>
     </modules>
 
