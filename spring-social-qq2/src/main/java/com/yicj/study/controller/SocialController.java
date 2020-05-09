@@ -13,6 +13,7 @@ import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,14 @@ public class SocialController {
 
 
     @GetMapping(SocialConfig.REGISTER_URI)
+    public String socialRegister(){
+
+        return "register.html" ;
+    }
+
+
+
+    @PostMapping(SocialConfig.REGISTER_URI)
     public String socialRegister(ServletWebRequest  request){
         //已经使用静默登录后这里不需要再次保存
         // 通过request对象获取Connect

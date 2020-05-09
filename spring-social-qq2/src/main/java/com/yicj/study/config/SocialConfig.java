@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 @EnableSocial
 public class SocialConfig extends SocialConfigurerAdapter {
 
-    public static final String REGISTER_URI = "/register";
+    public static final String REGISTER_URI = "/register ";
     public static final String FILTER_PROCESSES_URL = "/qqLogin";
 
     @Autowired
