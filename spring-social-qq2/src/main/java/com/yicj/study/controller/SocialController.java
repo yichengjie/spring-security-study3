@@ -32,17 +32,15 @@ public class SocialController {
 
     @GetMapping(SocialConfig.REGISTER_URI)
     public String socialRegister(ServletWebRequest  request){
-
         //已经使用静默登录后这里不需要再次保存
-
         // 通过request对象获取Connect
-        //Connection<?> connection = providerSignInUtils.getConnectionFromSession(request);
+        Connection<?> connection = providerSignInUtils.getConnectionFromSession(request);
         // 执行Connection持久化
-        //providerSignInUtils.doPostSignUp(connection.getKey().getProviderUserId(), request);
+        providerSignInUtils.doPostSignUp(connection.getKey().getProviderUserId(), request);
         //执行绑定账号，信息完善等其他逻辑
         //....
         // 跳转页面
-        return "redirect:/" ;
+        return "redirect:/home.html" ;
     }
 
 

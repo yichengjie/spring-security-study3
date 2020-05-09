@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  *
  * 在静默注册的同时生成用户记录，并赋予用户一个合适的角色
  */
-@Component
+//@Component
 public class ImplicitConnectionSignUp implements ConnectionSignUp {
 
     @Autowired

@@ -19,22 +19,21 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     private DataSource dataSource ;
 
     @Autowired
-    private SpringSocialConfigurer customeSpringSocialConfigurer ;
+    private SpringSocialConfigurer customSpringSocialConfigurer ;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http
             .authorizeRequests()
                 // 放开spring social过滤器相关的url访问权限
-                .antMatchers("/register","/oauth").permitAll()
+                .antMatchers("/index.html", "/home.html", SocialConfig.REGISTER_URI, SocialConfig.FILTER_PROCESSES_URL+"/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
                 .and()
             .csrf().disable()
             //应用spring Social配置
-            .apply(customeSpringSocialConfigurer)
+            .apply(customSpringSocialConfigurer)
         ;
     }
 

@@ -21,6 +21,7 @@ import javax.sql.DataSource;
 public class SocialConfig extends SocialConfigurerAdapter {
 
     public static final String REGISTER_URI = "/register";
+    public static final String FILTER_PROCESSES_URL = "/qqLogin";
 
     @Autowired
     private DataSource dataSource;
@@ -31,7 +32,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
     //申明自定义的SpringSocialConfigurer
     @Bean
     public SpringSocialConfigurer socialConfigurer(){
-        return new CommonSpringSocialConfigurer("/qqLogin", REGISTER_URI) ;
+        return new CommonSpringSocialConfigurer(FILTER_PROCESSES_URL, REGISTER_URI) ;
     }
 
 

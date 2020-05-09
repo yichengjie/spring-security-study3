@@ -31,7 +31,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
     //申明自定义的SpringSocialConfigurer
     @Bean
     public SpringSocialConfigurer socialConfigurer(){
-        return new CommonSpringSocialConfigurer("/oauth", REGISTER_URI) ;
+        return new CommonSpringSocialConfigurer("/qqLogin", REGISTER_URI) ;
     }
 
 
