@@ -26,8 +26,8 @@ public class SocialConfig extends SocialConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    @Autowired(required = false)
-    private ConnectionSignUp connectionSignUp ;
+    //@Autowired(required = false)
+    //private ConnectionSignUp connectionSignUp ;
 
     //申明自定义的SpringSocialConfigurer
     @Bean
@@ -43,17 +43,21 @@ public class SocialConfig extends SocialConfigurerAdapter {
         return new ProviderSignInUtils(factoryLocator,getUsersConnectionRepository(factoryLocator)) ;
     }
 
-
-    @Override
-    public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
+    @Bean
+    public UsersConnectionRepository usersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator){
         //申明一个基于jdbc的用户连接管理容器
         JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(
                 dataSource, connectionFactoryLocator, Encryptors.noOpText());
-
         // connection 隐式注册实例
-        if(connectionSignUp != null){
-            repository.setConnectionSignUp(connectionSignUp);
-        }
+        //if(connectionSignUp != null){
+        //   repository.setConnectionSignUp(connectionSignUp);
+        //}
         return repository ;
+    }
+
+
+    @Override
+    public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
+        return usersConnectionRepository(connectionFactoryLocator) ;
     }
 }

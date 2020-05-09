@@ -26,10 +26,11 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 // 放开spring social过滤器相关的url访问权限
-                .antMatchers("/index.html", "/home.html", SocialConfig.REGISTER_URI, SocialConfig.FILTER_PROCESSES_URL+"/*").permitAll()
+                .antMatchers("/index.html", SocialConfig.REGISTER_URI, SocialConfig.FILTER_PROCESSES_URL+"/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
+                .loginPage("/index.html")
                 .and()
             .csrf().disable()
             //应用spring Social配置
