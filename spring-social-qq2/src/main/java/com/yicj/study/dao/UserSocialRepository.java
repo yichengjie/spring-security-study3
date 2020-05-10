@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserSocialRepository extends JpaRepository<UserSocial,Long> {
+
+    UserSocial findByProviderIdAndSocialId(String providerId ,String socialId)  ;
+
 }
