@@ -1,6 +1,6 @@
 package com.yicj.study.service;
 
-import com.yicj.study.SpringSocialQQ2Application;
+import com.yicj.study.SpringSocialQQ3Application;
 import com.yicj.study.entity.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringSocialQQ2Application.class)
+@SpringBootTest(classes = SpringSocialQQ3Application.class)
 public class UserServiceTest {
     @Autowired
     private UserService userService ;
