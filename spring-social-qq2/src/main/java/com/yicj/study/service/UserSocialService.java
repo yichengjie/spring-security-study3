@@ -7,4 +7,5 @@ public interface UserSocialService {
     UserSocial findUserSocial (String providerId , String socialId)  ;
 
     void addUserSocial(UserSocial userSocial) ;
+
 }

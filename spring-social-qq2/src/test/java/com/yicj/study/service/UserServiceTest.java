@@ -19,7 +19,10 @@ public class UserServiceTest {
     @Test
     public void testFindByUsername() {
         String username = "yicj";
-        User user = userService.findByUsername(username);
+        User user = userService.findUserByName(username);
         log.info("user: {}", user);
     }
+
+
+
 }

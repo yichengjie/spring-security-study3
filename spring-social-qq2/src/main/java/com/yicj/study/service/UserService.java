@@ -6,5 +6,7 @@ public interface UserService {
 
     void addUser(User user) ;
 
-    User findByUsername(String  username) ;
+    User findUserByName(String  username) ;
+
+    User findUserById(Long id) ;
 }

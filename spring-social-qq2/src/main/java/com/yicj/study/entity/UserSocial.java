@@ -19,7 +19,7 @@ public class UserSocial {
      * 用户id
      */
     @Column(nullable = false)
-    private String userId ;
+    private Long userId ;
     /**
      * 社交账号类型,eg: QQ，微信等
      */
