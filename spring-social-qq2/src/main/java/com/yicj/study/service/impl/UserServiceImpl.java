@@ -27,4 +27,16 @@ public class UserServiceImpl implements UserService {
         return repository.findOne(id);
     }
 
+    /**
+     * 用户注册
+     * @param user
+     */
+    @Override
+    public void register(UserEntity user) {
+        UserEntity oldUser = this.findUserByName(user.getUsername());
+        if (oldUser == null){
+            this.addUser(user);
+        }
+    }
+
 }

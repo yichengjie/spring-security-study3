@@ -28,4 +28,24 @@ public class UserEntity {
      */
     @Column(nullable = false)
     private String roles ;
+
+    public UserEntity(){}
+
+    /**
+     * 默认赋user角色
+     * @param username
+     * @param password
+     */
+    public UserEntity(String username, String password){
+        this(username,password,"ROLE_USER") ;
+    }
+
+    public UserEntity(String username, String password, String roles){
+        this.username = username ;
+        this.password = password ;
+        this.roles = roles ;
+    }
+
+
+
 }

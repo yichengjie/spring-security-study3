@@ -21,13 +21,22 @@ public class UserSocialEntity {
     @Column(nullable = false)
     private String username ;
     /**
-     * 社交账号类型,eg: QQ，微信等
-     */
-    @Column(nullable = false)
-    private String providerId ;
-    /**
      * 社交账号唯一的id
      */
     @Column(nullable = false)
     private String socialId ;
+    /**
+     * 社交账号类型,eg: QQ，微信等
+     */
+    @Column(nullable = false)
+    private String providerId ;
+
+
+    public UserSocialEntity(){}
+
+    public UserSocialEntity(String username, String socialId, String providerId) {
+        this.username = username ;
+        this.socialId = socialId ;
+        this.providerId = providerId ;
+    }
 }

@@ -9,4 +9,10 @@ public interface UserService {
     UserEntity findUserByName(String  username) ;
 
     UserEntity findUserById(Long id) ;
+
+    /**
+     * 用户注册
+     * @param user
+     */
+    void register(UserEntity user) ;
 }
