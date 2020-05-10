@@ -9,9 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class HelloController {
     
-    @RequestMapping("/hello")
-    public String hello(HttpServletRequest request, @RequestParam(value = "name", defaultValue = "springboot-thymeleaf") String name) {
-        request.setAttribute("name", name); 
-        return "hello"; 
-    } 
+    @RequestMapping("/helloUI")
+    public String hello() {
+        return "hello";
+    }
+
+
+    @RequestMapping("/homeUI")
+    public String home() {
+        return "home";
+    }
+
 }

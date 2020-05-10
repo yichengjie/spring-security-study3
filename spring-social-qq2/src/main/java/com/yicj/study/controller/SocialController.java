@@ -36,7 +36,7 @@ public class SocialController {
     @GetMapping(SocialConfig.REGISTER_URI)
     public String socialRegister(){
         System.out.println("hello world");
-        return "register" ;
+        return "sigup" ;
     }
 
 
