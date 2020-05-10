@@ -7,9 +7,6 @@ public interface UserService {
     void addUser(UserEntity user) ;
 
     UserEntity findUserByName(String  username) ;
-
-    UserEntity findUserById(Long id) ;
-
     /**
      * 用户注册
      * @param user

@@ -22,10 +22,6 @@ public class UserServiceImpl implements UserService {
         return repository.findByUsername(username);
     }
 
-    @Override
-    public UserEntity findUserById(Long id) {
-        return repository.findOne(id);
-    }
 
     /**
      * 用户注册

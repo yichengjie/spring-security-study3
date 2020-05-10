@@ -1,7 +1,5 @@
 package com.yicj.study.component;
 
-import com.yicj.study.entity.UserSocialEntity;
-import com.yicj.study.service.UserSocialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,17 +16,17 @@ import java.util.Collection;
 public class MySocialUserDetailService implements SocialUserDetailsService {
 
     @Autowired
-    private UserSocialService userSocialService ;
-
-    @Autowired
     private UserDetailsService userDetailsService ;
 
+    /**
+     * connection表中的用户id，与user表中的username对应
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
-    public SocialUserDetails loadUserByUserId(String socialId) throws UsernameNotFoundException {
-        // 1 通过社交账号的openid获取用户id
-        UserSocialEntity userSocialEntity = userSocialService.findUserSocial(socialId) ;
-        String username = userSocialEntity.getUsername();
-        // 2. 通过社交账号绑定的用户id获取用户信息
+    public SocialUserDetails loadUserByUserId(String username) throws UsernameNotFoundException {
+        // 1. 通过社交账号绑定的用户id获取用户信息
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         if (userDetails == null){
             throw new UsernameNotFoundException("用户不存在") ;

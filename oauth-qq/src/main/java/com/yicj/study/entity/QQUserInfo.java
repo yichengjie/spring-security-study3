@@ -1,4 +1,4 @@
-package com.yicj.study.model;
+package com.yicj.study.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

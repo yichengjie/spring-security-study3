@@ -1,6 +1,7 @@
 package com.yicj.study.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yicj.study.entity.QQUserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class HelloOauthController {
      * @return
      */
     @GetMapping("/qqLogin/callback.do")
-    public Map<String, Object> callback(String code) throws IOException {
+    public QQUserInfo callback(String code) throws IOException {
         //1. 通过授权码获取Access Token
         String accessToken = this.getAccessToken(code);
         //2. 使用Access Token来获取用户的OpenID
@@ -63,7 +64,7 @@ public class HelloOauthController {
         String clientId = openIdAndClientIdMap.get("client_id") ;
         String openId = openIdAndClientIdMap.get("openid") ;
         //3 .使用Access Token以及OpenID来访问和修改用户数据
-        Map<String, Object> userInfo = this.getUserInfo(openId, clientId, accessToken);
+        QQUserInfo userInfo = this.getUserInfo(openId, clientId, accessToken);
         return userInfo ;
     }
 
@@ -72,14 +73,22 @@ public class HelloOauthController {
      * 使用Access Token以及OpenID来访问和修改用户数据
      * @return
      */
-    private Map<String,Object> getUserInfo(String openId, String clientId, String accessToken){
+    /*private QQUserInfo getUserInfo2(String openId, String clientId, String accessToken){
+        String url = "https://graph.qq.com/user/get_user_info?oauth_consumer_key={oauth_consumer_key}&openid={openid}" ;
+        QQUserInfo userInfo = restTemplate.getForObject(url, QQUserInfo.class, clientId, openId);
+        return userInfo ;
+    }*/
+
+    private QQUserInfo getUserInfo(String openId, String clientId, String accessToken){
+        //String url = "https://graph.qq.com/user/get_user_info?access_token={access_token}&oauth_consumer_key={oauth_consumer_key}&openid={openid}" ;
         String url = "https://graph.qq.com/user/get_user_info?access_token={access_token}&oauth_consumer_key={oauth_consumer_key}&openid={openid}" ;
         Map<String, String> params = new HashMap<>();
         params.put("access_token", accessToken) ;
         params.put("oauth_consumer_key", clientId) ;
         params.put("openid", openId) ;
-        Map <String,Object> retMap = restTemplate.getForObject(url, Map.class, params);
-        return retMap ;
+        //QQUserInfo userInfo = restTemplate.getForObject(url, QQUserInfo.class, params);
+        QQUserInfo userInfo = restTemplate.getForObject(url, QQUserInfo.class, accessToken, clientId, openId);
+        return userInfo ;
     }
 
 

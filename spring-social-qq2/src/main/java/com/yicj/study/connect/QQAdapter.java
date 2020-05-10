@@ -21,9 +21,10 @@ public class QQAdapter implements ApiAdapter<QQ> {
     public void setConnectionValues(QQ qq, ConnectionValues values) {
         QQUserInfo userInfo =  qq.getUserInfo() ;
         values.setProviderUserId(userInfo.getOpenId());
+
         values.setDisplayName(userInfo.getNickname());
-        values.setImageUrl(userInfo.getQqFigureUrl100());
-        values.setProfileUrl(null);
+        values.setProfileUrl(userInfo.getFigureurl30());
+        values.setImageUrl(userInfo.getQqFigureUrl40());
     }
 
     @Override
