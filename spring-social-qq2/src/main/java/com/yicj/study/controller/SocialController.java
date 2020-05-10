@@ -2,6 +2,7 @@ package com.yicj.study.controller;
 
 import com.yicj.study.config.SocialConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.omg.CORBA.StringHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,12 +35,16 @@ public class SocialController {
 
     @GetMapping(SocialConfig.REGISTER_URI)
     public String socialRegister(){
-
-        return "register.html" ;
+        System.out.println("hello world");
+        return "register" ;
     }
 
 
-
+    /**
+     * 首次使用qq登录的时候会跳到注册页面
+     * @param request
+     * @return
+     */
     @PostMapping(SocialConfig.REGISTER_URI)
     public String socialRegister(ServletWebRequest  request){
         //已经使用静默登录后这里不需要再次保存
