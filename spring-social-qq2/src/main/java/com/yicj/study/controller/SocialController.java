@@ -33,6 +33,10 @@ public class SocialController {
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy() ;
 
 
+    /**
+     * 注册页面
+     * @return
+     */
     @GetMapping(SocialConfig.REGISTER_URI)
     public String socialRegister(){
         System.out.println("hello world");
@@ -55,18 +59,6 @@ public class SocialController {
         //执行绑定账号，信息完善等其他逻辑
         //....
         // 跳转页面
-        return "redirect:/home.html" ;
+        return "redirect:/index.html" ;
     }
-
-
-    @GetMapping("/login")
-    public String loginPage(HttpServletRequest request, HttpServletResponse response){
-        SavedRequest savedRequest = requestCache.getRequest(request, response);
-        if (savedRequest != null){
-            String targetUrl = savedRequest.getRedirectUrl();
-            log.info("引发跳转的请求是: {}",targetUrl);
-        }
-        return "login" ;
-    }
-
 }

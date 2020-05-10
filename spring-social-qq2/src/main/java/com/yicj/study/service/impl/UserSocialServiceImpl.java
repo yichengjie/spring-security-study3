@@ -1,7 +1,7 @@
 package com.yicj.study.service.impl;
 
 import com.yicj.study.dao.UserSocialRepository;
-import com.yicj.study.entity.UserSocial;
+import com.yicj.study.entity.UserSocialEntity;
 import com.yicj.study.service.UserSocialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,12 +13,12 @@ public class UserSocialServiceImpl implements UserSocialService {
     private UserSocialRepository repository ;
 
     @Override
-    public UserSocial findUserSocial(String userId, String socialId) {
-        return repository.findByProviderIdAndSocialId(userId, socialId);
+    public UserSocialEntity findUserSocial(String socialId) {
+        return repository.findBySocialId(socialId);
     }
 
     @Override
-    public void addUserSocial(UserSocial userSocial) {
+    public void addUserSocial(UserSocialEntity userSocial) {
         repository.save(userSocial) ;
     }
 }

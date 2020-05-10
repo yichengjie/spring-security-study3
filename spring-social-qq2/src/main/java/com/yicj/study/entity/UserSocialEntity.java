@@ -11,15 +11,15 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "user_social")
-public class UserSocial {
+public class UserSocialEntity {
     @Id
     @GeneratedValue
     private Long id;
     /**
-     * 用户id
+     * 用户名
      */
     @Column(nullable = false)
-    private Long userId ;
+    private String username ;
     /**
      * 社交账号类型,eg: QQ，微信等
      */

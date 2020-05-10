@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "user")
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue
     private Long id;

@@ -1,7 +1,7 @@
 package com.yicj.study.service;
 
 import com.yicj.study.SpringSocialQQApplication;
-import com.yicj.study.entity.User;
+import com.yicj.study.entity.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ public class UserServiceTest {
     @Test
     public void testFindByUsername() {
         String username = "yicj";
-        User user = userService.findUserByName(username);
+        UserEntity user = userService.findUserByName(username);
         log.info("user: {}", user);
     }
 

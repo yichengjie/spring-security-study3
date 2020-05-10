@@ -1,8 +1,8 @@
 package com.yicj.study.service;
 
 import com.yicj.study.SpringSocialQQApplication;
-import com.yicj.study.entity.User;
-import com.yicj.study.entity.UserSocial;
+import com.yicj.study.entity.UserEntity;
+import com.yicj.study.entity.UserSocialEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,20 +23,19 @@ public class UserSocialServiceTest {
 
     @Test
     public void testFindUserSocial(){
-        String providerId = "QQ";
         String socialId = "123";
-        UserSocial userSocial = userSocialService.findUserSocial(providerId, socialId);
+        UserSocialEntity userSocial = userSocialService.findUserSocial(socialId);
         log.info("===> userSocial : {}", userSocial);
-        Long userId = userSocial.getUserId();
+        String username = userSocial.getUsername() ;
 
-        User user = userService.findUserById(userId);
+        UserEntity user = userService.findUserByName(username);
         log.info("===> user : {} " , user);
     }
 
     @Test
     public void  testAddUserSocial(){
-        UserSocial userSocial = new UserSocial() ;
-        userSocial.setUserId(1L);
+        UserSocialEntity userSocial = new UserSocialEntity() ;
+        userSocial.setUsername("yicj");
         userSocial.setProviderId("QQ");
         userSocial.setSocialId("123");
         userSocialService.addUserSocial(userSocial);

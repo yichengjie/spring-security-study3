@@ -1,12 +1,12 @@
 package com.yicj.study.dao;
 
-import com.yicj.study.entity.UserSocial;
+import com.yicj.study.entity.UserSocialEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserSocialRepository extends JpaRepository<UserSocial,Long> {
+public interface UserSocialRepository extends JpaRepository<UserSocialEntity,Long> {
 
-    UserSocial findByProviderIdAndSocialId(String providerId ,String socialId)  ;
+    UserSocialEntity findBySocialId(String socialId)  ;
 
 }

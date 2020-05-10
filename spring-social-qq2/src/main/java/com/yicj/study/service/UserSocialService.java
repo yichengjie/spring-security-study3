@@ -1,11 +1,13 @@
 package com.yicj.study.service;
 
-import com.yicj.study.entity.UserSocial;
+import com.yicj.study.entity.UserSocialEntity;
 
 public interface UserSocialService {
 
-    UserSocial findUserSocial (String providerId , String socialId)  ;
+    UserSocialEntity findUserSocial (String socialId)  ;
 
-    void addUserSocial(UserSocial userSocial) ;
+    void addUserSocial(UserSocialEntity userSocial) ;
+
+
 
 }

@@ -1,12 +1,12 @@
 package com.yicj.study.service;
 
-import com.yicj.study.entity.User;
+import com.yicj.study.entity.UserEntity;
 
 public interface UserService {
 
-    void addUser(User user) ;
+    void addUser(UserEntity user) ;
 
-    User findUserByName(String  username) ;
+    UserEntity findUserByName(String  username) ;
 
-    User findUserById(Long id) ;
+    UserEntity findUserById(Long id) ;
 }

@@ -1,7 +1,7 @@
 package com.yicj.study.dao;
 
 import com.yicj.study.SpringSocialQQApplication;
-import com.yicj.study.entity.User;
+import com.yicj.study.entity.UserEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,13 @@ public class UserRepositoryTest {
 
     @Test
     public void testQueryAll(){
-        List<User> list = userRepository.findAll();
+        List<UserEntity> list = userRepository.findAll();
         System.out.println(list);
     }
 
     @Test
     public void testSave(){
-        User user = new User() ;
+        UserEntity user = new UserEntity() ;
         user.setUsername("yicj");
         user.setPassword("123");
         user.setRoles("ROLE_USER");
