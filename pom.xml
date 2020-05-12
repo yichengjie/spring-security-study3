@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>security-demo2</module>
-		<module>remember-study</module>
         <module>oauth2-boot</module>
         <module>security-basic-study</module>
         <module>oauth-basic-study</module>
@@ -17,18 +16,12 @@
         <module>spring-social-study</module>
         <module>session-share-study</module>
         <module>security-comprehensive-study</module>
+        <module>oauth-client-study</module>
     </modules>
 
 
     <packaging>pom</packaging>
 
-<!--    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        &lt;!&ndash;<version>2.1.3.RELEASE</version>&ndash;&gt;
-        <version>1.5.22.RELEASE</version>
-        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-    </parent>-->
 
     <properties>
         <imooc.securiity.version>1.0-SNAPSHOT</imooc.securiity.version>
