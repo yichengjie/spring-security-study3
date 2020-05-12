@@ -8,28 +8,15 @@
     <artifactId>spring-security-study3</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>basic-introduction</module>
-        <module>basic-middle</module>
-		<module>basic-advance</module>
-		<module>session-share</module>
-		<module>session-share2</module>
-        <module>redis-study</module>
-		<module>session-share-security</module>
-        <module>property-study</module>
-        <module>security-core</module>
-        <module>security-app</module>
-        <module>security-browser</module>
-        <module>security-demo</module>
         <module>security-demo2</module>
-        <module>static-study</module>
 		<module>remember-study</module>
-        <module>oauth-github</module>
-        <module>oauth-qq</module>
-        <module>spring-social-qq</module>
-        <module>spring-social-qq2</module>
-        <module>spring-social-qq3</module>
         <module>oauth2-boot</module>
-        <module>security-oauth-github</module>
+        <module>security-basic-study</module>
+        <module>oauth-basic-study</module>
+        <module>other-api-study</module>
+        <module>spring-social-study</module>
+        <module>session-share-study</module>
+        <module>security-comprehensive-study</module>
     </modules>
 
 
