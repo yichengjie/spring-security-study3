@@ -17,6 +17,7 @@
         <module>property-study</module>
         <module>redis-study</module>
         <module>static-study</module>
+        <module>remember-study</module>
     </modules>
 
 
