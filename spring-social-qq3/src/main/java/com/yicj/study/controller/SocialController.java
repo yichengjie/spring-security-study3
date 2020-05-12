@@ -17,13 +17,13 @@ import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
-
-@Controller
 @Slf4j
+@Controller
 public class SocialController {
 
     @Autowired
@@ -66,6 +66,7 @@ public class SocialController {
     }
 
     @GetMapping("/social/user")
+    @ResponseBody
     public SocialUserInfo getSocialUserInfo(HttpServletRequest request){
         SocialUserInfo userInfo = new SocialUserInfo() ;
         Connection<?> connection = providerSignInUtils.getConnectionFromSession(new ServletWebRequest(request));
@@ -78,6 +79,7 @@ public class SocialController {
 
 
     @GetMapping("/me")
+    @ResponseBody
     public UserDetails getCurrentUser(@AuthenticationPrincipal UserDetails userDetails){
 
         return userDetails ;

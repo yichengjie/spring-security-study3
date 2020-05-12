@@ -32,4 +32,18 @@ public class UserRepositoryTest {
         userRepository.save(user) ;
     }
 
+    @Test
+    public void testFindByUsername(){
+        String username = "yicj";
+        UserEntity user = this.userRepository.findByUsername(username);
+        System.out.println(user);
+    }
+
+    @Test
+    public void testFindByUsername2(){
+        String username = "user";
+        UserEntity user = this.userRepository.findByUsername(username);
+        System.out.println(user);
+    }
+
 }
