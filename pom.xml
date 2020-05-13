@@ -17,6 +17,7 @@
         <module>session-share-study</module>
         <module>security-comprehensive-study</module>
         <module>oauth-client-study</module>
+        <module>oauth-server-study</module>
     </modules>
 
 
