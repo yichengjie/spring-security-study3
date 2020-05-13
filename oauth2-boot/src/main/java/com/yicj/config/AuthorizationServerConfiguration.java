@@ -33,7 +33,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     private static final String PROP_CLIENTID = "authentication.oauth.clientid";
     private static final String PROP_SECRET = "authentication.oauth.secret";
-    private static final String PROP_TOKEN_VALIDITY_SECONDS = "authentication.oauth..tokenValidityInSeconds";
+    private static final String PROP_TOKEN_VALIDITY_SECONDS = "authentication.oauth.tokenValidityInSeconds";
 
     @Autowired
     private DataSource dataSource ;
