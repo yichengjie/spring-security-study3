@@ -1,4 +1,4 @@
-package com.yicj.browser;
+package com.yicj.core.authentication;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.AuthorityUtils;

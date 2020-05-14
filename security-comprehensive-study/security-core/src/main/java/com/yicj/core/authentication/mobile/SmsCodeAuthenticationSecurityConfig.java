@@ -1,8 +1,6 @@
 package com.yicj.core.authentication.mobile;
 
 
-import com.yicj.core.handler.MyAuthenticationFailureHandler;
-import com.yicj.core.handler.MyAuthenticationSuccessHandler;
 import com.yicj.core.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,6 +8,8 @@ import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.DefaultSecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 
@@ -18,17 +18,15 @@ import org.springframework.stereotype.Component;
 public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
     @Autowired
-    private MyAuthenticationSuccessHandler successHandler ;
+    private AuthenticationSuccessHandler successHandler ;
     @Autowired
-    private MyAuthenticationFailureHandler failureHandler ;
+    private AuthenticationFailureHandler failureHandler ;
     @Autowired
     private UserDetailsService userDetailsService ;
 
     @Autowired
     private SecurityProperties securityProperties ;
 
-    @Autowired
-    private MyAuthenticationFailureHandler myAuthenticationFailureHandler ;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
