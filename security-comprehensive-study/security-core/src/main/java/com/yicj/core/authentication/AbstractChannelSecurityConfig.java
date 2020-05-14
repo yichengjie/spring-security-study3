@@ -1,18 +1,18 @@
 package com.yicj.core.authentication;
 
-import com.yicj.core.handler.MyAuthenticationFailureHandler;
-import com.yicj.core.handler.MyAuthenticationSuccessHandler;
 import com.yicj.core.properties.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 public class AbstractChannelSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private MyAuthenticationFailureHandler myAuthenticationFailureHandler ;
+    private AuthenticationFailureHandler myAuthenticationFailureHandler ;
 
     @Autowired
-    private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler ;
+    private AuthenticationSuccessHandler myAuthenticationSuccessHandler ;
 
 
     protected void applyPasswordAuthenticationConfig(HttpSecurity http) throws Exception{

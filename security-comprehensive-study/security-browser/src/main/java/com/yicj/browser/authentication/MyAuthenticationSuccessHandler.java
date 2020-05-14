@@ -1,4 +1,4 @@
-package com.yicj.core.handler;
+package com.yicj.browser.authentication;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
