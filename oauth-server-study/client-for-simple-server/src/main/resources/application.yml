@@ -7,7 +7,7 @@ spring:
             client-id: client-for-server
             client-secret: client-for-server
             provider: authorizationserver
-            client-name: Ê¹ÓÃ×Ô¶¨ÒåµÄÊÚÈ¨·şÎñÆ÷µÇÂ¼
+            client-name: "ä½¿ç”¨è‡ªå®šä¹‰æˆæƒæœåŠ¡ç™»å½•"
             authorization-grant-type: authorization_code
             client-authentication-method: basic
             scope: profile,email,phone
