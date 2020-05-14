@@ -14,7 +14,8 @@
 
     <modules>
         <module>oauth2-boot</module>
-        <module>oauth-server-simple</module>
+        <module>auth-server-simple</module>
+        <module>client-for-simple-server</module>
     </modules>
 
 
