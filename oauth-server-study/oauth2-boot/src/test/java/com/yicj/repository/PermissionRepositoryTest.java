@@ -1,7 +1,7 @@
 package com.yicj.repository;
 
 import com.yicj.BaseTest;
-import com.yicj.model.Permission;
+import com.yicj.client.model.Permission;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

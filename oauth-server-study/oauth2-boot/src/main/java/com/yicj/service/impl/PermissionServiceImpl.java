@@ -1,6 +1,6 @@
 package com.yicj.service.impl;
 
-import com.yicj.model.Permission;
+import com.yicj.client.model.Permission;
 import com.yicj.repository.PermissionRepository;
 import com.yicj.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;

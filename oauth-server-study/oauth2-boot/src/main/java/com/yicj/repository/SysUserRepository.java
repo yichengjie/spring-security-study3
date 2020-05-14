@@ -1,6 +1,6 @@
 package com.yicj.repository;
 
-import com.yicj.model.SysUser;
+import com.yicj.client.model.SysUser;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

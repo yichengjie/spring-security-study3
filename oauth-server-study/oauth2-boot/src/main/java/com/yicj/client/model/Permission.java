@@ -1,4 +1,4 @@
-package com.yicj.model;
+package com.yicj.client.model;
 
 import lombok.Data;
 

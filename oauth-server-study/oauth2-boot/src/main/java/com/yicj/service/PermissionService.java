@@ -1,6 +1,6 @@
 package com.yicj.service;
 
-import com.yicj.model.Permission;
+import com.yicj.client.model.Permission;
 import java.util.List;
 
 public interface PermissionService {

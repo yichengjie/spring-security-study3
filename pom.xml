@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>security-demo2</module>
-        <module>oauth2-boot</module>
         <module>security-basic-study</module>
         <module>oauth-basic-study</module>
         <module>other-api-study</module>
