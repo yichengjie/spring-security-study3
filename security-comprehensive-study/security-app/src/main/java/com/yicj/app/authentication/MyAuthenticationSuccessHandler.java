@@ -25,7 +25,8 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
     private SecurityProperties securityProperties ;
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request,
+                    HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         LoginType loginType = securityProperties.getBrowser().getLoginType();
         if (loginType == LoginType.JOSN){
             String content = objectMapper.writeValueAsString(authentication);

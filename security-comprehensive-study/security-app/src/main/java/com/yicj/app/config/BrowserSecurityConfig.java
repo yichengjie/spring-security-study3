@@ -42,5 +42,8 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
             .csrf().disable() ;
     }
 
+    public static void main(String[] args) {
+        System.out.println("hello");
+    }
 
 }
