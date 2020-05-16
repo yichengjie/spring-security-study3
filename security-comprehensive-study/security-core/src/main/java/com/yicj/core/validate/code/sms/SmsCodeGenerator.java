@@ -3,7 +3,7 @@ package com.yicj.core.validate.code.sms;
 import com.yicj.core.properties.SecurityProperties;
 import com.yicj.core.validate.code.ValidateCode;
 import com.yicj.core.validate.code.ValidateCodeGenerator;
-import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;

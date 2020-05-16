@@ -4,7 +4,7 @@ import java.util.Map;
 import com.yicj.core.validate.code.*;
 import com.yicj.core.validate.code.social.HttpSessionSessionStrategy;
 import com.yicj.core.validate.code.social.SessionStrategy;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
