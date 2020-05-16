@@ -14,7 +14,7 @@
         <module>other-api-study</module>
         <module>spring-social-study</module>
         <module>session-share-study</module>
-        <module>security-comprehensive-study</module>
+        <module>imooc-security-study</module>
         <module>oauth-client-study</module>
         <module>oauth-server-study</module>
     </modules>
