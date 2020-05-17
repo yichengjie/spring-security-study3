@@ -1,9 +1,9 @@
-package com.yicj.service.impl;
+package com.yicj.security.impl;
 
 import com.yicj.client.model.Permission;
 import com.yicj.client.model.SysUser;
 import com.yicj.repository.SysUserRepository;
-import com.yicj.service.PermissionService;
+import com.yicj.security.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

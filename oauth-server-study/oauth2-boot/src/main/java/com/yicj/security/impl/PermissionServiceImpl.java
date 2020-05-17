@@ -1,8 +1,8 @@
-package com.yicj.service.impl;
+package com.yicj.security.impl;
 
 import com.yicj.client.model.Permission;
 import com.yicj.repository.PermissionRepository;
-import com.yicj.service.PermissionService;
+import com.yicj.security.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;

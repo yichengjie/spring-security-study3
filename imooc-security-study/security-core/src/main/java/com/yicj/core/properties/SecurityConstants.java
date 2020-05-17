@@ -8,8 +8,6 @@ public interface SecurityConstants {
 	String DEFAULT_VALIDATE_CODE_URL_PREFIX = "/code";
 	/**
 	 * 当请求需要身份认证时，默认跳转的url
-	 * 
-	 * @see SecurityController
 	 */
 	String DEFAULT_UNAUTHENTICATION_URL = "/authentication/require";
 	/**
@@ -21,9 +19,11 @@ public interface SecurityConstants {
 	 */
 	String DEFAULT_LOGIN_PROCESSING_URL_MOBILE = "/authentication/mobile";
 	/**
+	 * 默认的OPENID登录请求处理url
+	 */
+	String DEFAULT_SIGN_IN_PROCESSING_URL_OPENID = "/authentication/openid";
+	/**
 	 * 默认登录页面
-	 * 
-	 * @see SecurityController
 	 */
 	String DEFAULT_LOGIN_PAGE_URL = "/imooc-signIn.html";
 	/**
@@ -39,4 +39,20 @@ public interface SecurityConstants {
 	 */
 	String DEFAULT_PARAMETER_NAME_MOBILE = "mobile";
 
+	/**
+	 * openid参数名
+	 */
+	String DEFAULT_PARAMETER_NAME_OPENID = "openId";
+	/**
+	 * providerId参数名
+	 */
+	String DEFAULT_PARAMETER_NAME_PROVIDERID = "providerId";
+	/**
+	 * session失效默认的跳转地址
+	 */
+	String DEFAULT_SESSION_INVALID_URL = "/imooc-session-invalid.html";
+	/**
+	 * 获取第三方用户信息的url
+	 */
+	String DEFAULT_SOCIAL_USER_INFO_URL = "/social/user";
 }

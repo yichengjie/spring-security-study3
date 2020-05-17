@@ -19,6 +19,13 @@
         <module>spring-social-qq3</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
 
     <dependencyManagement>
         <dependencies>

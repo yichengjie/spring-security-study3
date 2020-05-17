@@ -1,7 +1,7 @@
 package com.yicj.controller;
 
 import com.yicj.client.model.Permission;
-import com.yicj.service.PermissionService;
+import com.yicj.security.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

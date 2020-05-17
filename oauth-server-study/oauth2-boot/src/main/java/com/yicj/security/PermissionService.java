@@ -1,4 +1,4 @@
-package com.yicj.service;
+package com.yicj.security;
 
 import com.yicj.client.model.Permission;
 import java.util.List;

@@ -1,5 +1,6 @@
 package com.yicj.app.config;
 
+import com.yicj.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
 import com.yicj.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.yicj.core.properties.SecurityConstants;
 import com.yicj.core.properties.SecurityProperties;
@@ -27,6 +28,10 @@ public class ImoocResourceServerConfig  extends ResourceServerConfigurerAdapter 
     @Autowired
     private AuthenticationSuccessHandler myAuthenticationSuccessHandler ;
 
+    @Autowired
+    private OpenIdAuthenticationSecurityConfig openIdAuthenticationSecurityConfig ;
+
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.formLogin()
@@ -42,6 +47,8 @@ public class ImoocResourceServerConfig  extends ResourceServerConfigurerAdapter 
             //图形验证相关配置
             .apply(validateCodeSecurityConfig)
                 .and()
+            .apply(openIdAuthenticationSecurityConfig)
+                .and()
             .authorizeRequests()
                 // 登录页面，和验证码页面不需要权限验证
                 .antMatchers(securityProperties.getBrowser().getLoginPage(),
@@ -52,5 +59,6 @@ public class ImoocResourceServerConfig  extends ResourceServerConfigurerAdapter 
                 .and()
             .csrf().disable() ;
     }
+
 
 }
