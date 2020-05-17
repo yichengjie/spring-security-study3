@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @EnableWebSecurity
 public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
+
     @Autowired
     private SecurityProperties securityProperties ;
     @Autowired
