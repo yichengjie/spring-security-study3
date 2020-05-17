@@ -13,9 +13,13 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .anyRequest().authenticated()
-            .and()
+                .antMatchers("/hello/api/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
             .formLogin().and()
-            .httpBasic();
+                .httpBasic()
+                .and()
+            .csrf().disable()
+        ;
     }
 }

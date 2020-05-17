@@ -2,8 +2,6 @@ package com.yicj.core.validate.code;
 
 import com.yicj.core.properties.SecurityConstants;
 import com.yicj.core.properties.SecurityProperties;
-import com.yicj.core.validate.code.social.HttpSessionSessionStrategy;
-import com.yicj.core.validate.code.social.SessionStrategy;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +24,6 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
     @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler ;
-
-    private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy() ;
 
     @Autowired
     private SecurityProperties securityProperties ;

@@ -34,7 +34,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
             .authorizeRequests()
                 // 登录页面，和验证码页面不需要权限验证
                 .antMatchers(securityProperties.getBrowser().getLoginPage(),
-                        "/code/*")
+                        "/code/*","/hello")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

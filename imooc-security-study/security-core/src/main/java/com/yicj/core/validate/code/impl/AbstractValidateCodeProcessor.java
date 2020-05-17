@@ -2,10 +2,10 @@ package com.yicj.core.validate.code.impl;
 
 import java.util.Map;
 import com.yicj.core.validate.code.*;
-import com.yicj.core.validate.code.social.HttpSessionSessionStrategy;
-import com.yicj.core.validate.code.social.SessionStrategy;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.web.HttpSessionSessionStrategy;
+import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;

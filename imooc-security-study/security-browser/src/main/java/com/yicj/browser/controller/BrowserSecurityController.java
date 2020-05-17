@@ -11,9 +11,7 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +36,8 @@ public class BrowserSecurityController {
      * @return
      */
     @RequestMapping("/authentication/require")
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         if (savedRequest != null){
@@ -49,5 +48,11 @@ public class BrowserSecurityController {
             }
         }
         return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页面");
+    }
+
+    @GetMapping("/hello")
+    @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
+    public SimpleResponse hello(){
+        return new SimpleResponse("hello world") ;
     }
 }
