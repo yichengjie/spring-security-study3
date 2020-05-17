@@ -12,8 +12,13 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 @EnableAuthorizationServer
@@ -31,8 +36,11 @@ public class  ImoocAuthorizationServerConfig extends AuthorizationServerConfigur
     @Autowired
     private TokenStore tokenStore ;
 
-    @Autowired
+    @Autowired(required = false)
     private JwtAccessTokenConverter jwtAccessTokenConverter ;
+
+    @Autowired
+    private TokenEnhancer jwtTokenEnhancer ;
 
 
     @Override
@@ -42,8 +50,16 @@ public class  ImoocAuthorizationServerConfig extends AuthorizationServerConfigur
             .authenticationManager(authenticationManager)
             .userDetailsService(userDetailsService)
         ;
-        if (jwtAccessTokenConverter != null){
-            endpoints.accessTokenConverter(jwtAccessTokenConverter) ;
+        if (jwtAccessTokenConverter != null && jwtTokenEnhancer !=null){
+            TokenEnhancerChain enhancerChain = new TokenEnhancerChain() ;
+            List<TokenEnhancer> enhancers = new ArrayList<>() ;
+            enhancers.add(jwtTokenEnhancer) ;
+            enhancers.add(jwtAccessTokenConverter) ;
+            enhancerChain.setTokenEnhancers(enhancers);
+
+            endpoints
+                .tokenEnhancer(enhancerChain)
+                .accessTokenConverter(jwtAccessTokenConverter) ;
         }
     }
 
