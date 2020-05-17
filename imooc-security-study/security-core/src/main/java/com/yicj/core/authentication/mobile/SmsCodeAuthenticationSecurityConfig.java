@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
 public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
     @Autowired
-    private AuthenticationSuccessHandler successHandler ;
+    private AuthenticationSuccessHandler authenticationSuccessHandler ;
     @Autowired
-    private AuthenticationFailureHandler failureHandler ;
+    private AuthenticationFailureHandler authenticationFailureHandler ;
     @Autowired
     private UserDetailsService userDetailsService ;
 
@@ -35,8 +35,8 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
         //   1.1 filter配置AuthenticationManager
         smsAuthenticationFilter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
         //   1.2 成功失败处理器
-        smsAuthenticationFilter.setAuthenticationSuccessHandler(successHandler);
-        smsAuthenticationFilter.setAuthenticationFailureHandler(failureHandler);
+        smsAuthenticationFilter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
+        smsAuthenticationFilter.setAuthenticationFailureHandler(authenticationFailureHandler);
 
         //2. AuthenticationProvider实例化并配置
         SmsCodeAuthenticationProvider smsAuthenticationprovider = new SmsCodeAuthenticationProvider() ;

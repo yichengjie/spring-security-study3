@@ -17,7 +17,7 @@ import java.io.IOException;
 
 //登录失败时的处理逻辑
 // SimpleUrlAuthenticationFailureHandler为spring security默认处理器
-@Component
+@Component("authenticationFailureHandler")
 public class MyAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler /*implements AuthenticationFailureHandler*/ {
 
     @Autowired

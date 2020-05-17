@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 //SavedRequestAwareAuthenticationSuccessHandler为spring security默认的登录成功处理器
-@Component
+@Component("authenticationSuccessHandler")
 public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler /*implements AuthenticationSuccessHandler*/ {
     @Autowired
     private ObjectMapper objectMapper ;
