@@ -38,7 +38,8 @@ public class BrowserSecurityController {
      * @return
      */
     @RequestMapping("/authentication/require")
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //加上下面的HttpStatus.UNAUTHORIZED后，return回去的内容将无法显示在页面
+    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request,
                 HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);

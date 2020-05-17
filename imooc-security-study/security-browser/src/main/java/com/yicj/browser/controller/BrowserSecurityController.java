@@ -36,8 +36,8 @@ public class BrowserSecurityController {
      * @return
      */
     @RequestMapping("/authentication/require")
+    //加上下面的HttpStatus.UNAUTHORIZED后，return回去的内容将无法显示在页面
     //@ResponseStatus(HttpStatus.UNAUTHORIZED)
-    @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         if (savedRequest != null){
@@ -50,9 +50,4 @@ public class BrowserSecurityController {
         return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页面");
     }
 
-    @GetMapping("/hello")
-    @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
-    public SimpleResponse hello(){
-        return new SimpleResponse("hello world") ;
-    }
 }
