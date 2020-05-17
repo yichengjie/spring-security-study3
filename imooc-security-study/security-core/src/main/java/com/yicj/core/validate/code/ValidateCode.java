@@ -1,8 +1,9 @@
 package com.yicj.core.validate.code;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ValidateCode {
+public class ValidateCode implements Serializable {
 	
 	private String code;
 	
