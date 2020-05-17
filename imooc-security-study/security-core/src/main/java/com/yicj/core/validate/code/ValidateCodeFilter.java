@@ -22,7 +22,7 @@ import java.util.Set;
 @Component
 public class ValidateCodeFilter extends OncePerRequestFilter implements InitializingBean {
 
-    @Autowired(required = false)
+    @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler ;
 
     @Autowired
