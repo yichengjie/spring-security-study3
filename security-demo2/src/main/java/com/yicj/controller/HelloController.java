@@ -1,9 +1,7 @@
 package com.yicj.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -11,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @GetMapping("/hello")
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //注意:这里加上HttpStatus.UNAUTHORIZED后前台无法输出内容
     public String hello(){
-
-        return "hello" ;
+        return "hello world" ;
     }
 }

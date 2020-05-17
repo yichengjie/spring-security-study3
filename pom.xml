@@ -19,7 +19,6 @@
         <module>oauth-server-study</module>
     </modules>
 
-
     <packaging>pom</packaging>
 
     <properties>
