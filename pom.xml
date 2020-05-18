@@ -17,6 +17,7 @@
         <module>imooc-security-study</module>
         <module>oauth-client-study</module>
         <module>oauth-server-study</module>
+        <module>sso-demo-study</module>
     </modules>
 
     <packaging>pom</packaging>
