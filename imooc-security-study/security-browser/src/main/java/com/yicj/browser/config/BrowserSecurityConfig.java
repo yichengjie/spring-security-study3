@@ -2,6 +2,7 @@ package com.yicj.browser.config;
 
 import com.yicj.core.authentication.AbstractChannelSecurityConfig;
 import com.yicj.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.yicj.core.authorize.AuthorizeConfigManager;
 import com.yicj.core.properties.SecurityProperties;
 import com.yicj.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @EnableWebSecurity
 public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
-
     @Autowired
     private SecurityProperties securityProperties ;
     @Autowired
     private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig ;
     @Autowired
     private ValidateCodeSecurityConfig validateCodeSecurityConfig ;
+    @Autowired
+    private AuthorizeConfigManager authorizeConfigManager ;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //密码登录的配置
@@ -32,15 +35,8 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
             //图形验证相关配置
             .apply(validateCodeSecurityConfig)
                 .and()
-            .authorizeRequests()
-                // 登录页面，和验证码页面不需要权限验证
-                .antMatchers(securityProperties.getBrowser().getLoginPage(),
-                        "/code/*")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
             .csrf().disable() ;
+        authorizeConfigManager.config(http.authorizeRequests());
     }
 
 

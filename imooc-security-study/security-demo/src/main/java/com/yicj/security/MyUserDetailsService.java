@@ -32,7 +32,10 @@ public class MyUserDetailsService implements UserDetailsService , SocialUserDeta
     private SocialUserDetails buildUser(String userId) {
         // 根据用户名查找用户信息
         //根据查找到的用户信息判断用户是否被冻结
-        String roles = "ROLE_USER,ROLE_USER" ;
+        String roles = "ROLE_USER" ;
+        if ("admin".equals(userId)){
+            roles = "ROLE_USER,ROLE_ADMIN" ;
+        }
         return new SocialUser(userId, "123",
                 true, true, true, true,
                 AuthorityUtils.commaSeparatedStringToAuthorityList(roles));

@@ -2,6 +2,7 @@ package com.yicj.app.config;
 
 import com.yicj.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
 import com.yicj.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.yicj.core.authorize.AuthorizeConfigManager;
 import com.yicj.core.properties.SecurityConstants;
 import com.yicj.core.properties.SecurityProperties;
 import com.yicj.core.validate.code.ValidateCodeSecurityConfig;
@@ -31,6 +32,9 @@ public class ImoocResourceServerConfig  extends ResourceServerConfigurerAdapter 
     @Autowired
     private OpenIdAuthenticationSecurityConfig openIdAuthenticationSecurityConfig ;
 
+    @Autowired
+    private AuthorizeConfigManager authorizeConfigManager ;
+
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -49,15 +53,9 @@ public class ImoocResourceServerConfig  extends ResourceServerConfigurerAdapter 
                 .and()
             .apply(openIdAuthenticationSecurityConfig)
                 .and()
-            .authorizeRequests()
-                // 登录页面，和验证码页面不需要权限验证
-                .antMatchers(securityProperties.getBrowser().getLoginPage(),
-                        "/code/*")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
             .csrf().disable() ;
+
+        authorizeConfigManager.config(http.authorizeRequests());
     }
 
 

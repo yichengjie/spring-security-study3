@@ -22,17 +22,11 @@ public class ImoocAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
 	@Override
 	public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
-		config.antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
-				SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
-				SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_OPENID,
-				SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
-				securityProperties.getBrowser().getSignInPage(), 
-				securityProperties.getBrowser().getSignUpUrl(),
-				securityProperties.getBrowser().getSession().getSessionInvalidUrl()).permitAll();
-
-		if (StringUtils.isNotBlank(securityProperties.getBrowser().getSignOutUrl())) {
-			config.antMatchers(securityProperties.getBrowser().getSignOutUrl()).permitAll();
-		}
+		// 登录页面，和验证码页面不需要权限验证
+	    config.antMatchers(
+	    		securityProperties.getBrowser().getLoginPage(),
+				"/code/*")
+			.permitAll() ;
 		return false;
 	}
 
