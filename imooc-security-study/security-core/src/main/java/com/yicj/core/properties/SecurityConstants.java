@@ -1,7 +1,11 @@
 package com.yicj.core.properties;
 
 public interface SecurityConstants {
-	
+
+	/**
+	 * 默认登录页面
+	 */
+	String DEFAULT_SIGN_IN_PAGE_URL = "/imooc-signIn.html";
 	/**
 	 * 默认的处理验证码的url前缀
 	 */
