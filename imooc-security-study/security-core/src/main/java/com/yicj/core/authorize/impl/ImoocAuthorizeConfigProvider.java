@@ -1,9 +1,7 @@
 package com.yicj.core.authorize.impl;
 
 import com.yicj.core.authorize.AuthorizeConfigProvider;
-import com.yicj.core.properties.SecurityConstants;
 import com.yicj.core.properties.SecurityProperties;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
