@@ -11,13 +11,13 @@ public class HelloController {
     
     @RequestMapping("/helloUI")
     public String hello() {
-        return "hello";
+        return "hello.html";
     }
 
 
     @RequestMapping("/homeUI")
     public String home() {
-        return "home";
+        return "home.html";
     }
 
 }
