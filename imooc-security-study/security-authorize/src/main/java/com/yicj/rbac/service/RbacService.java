@@ -1,4 +1,4 @@
-package com.yicj.authorize.service;
+package com.yicj.rbac.service;
 
 import org.springframework.security.core.Authentication;
 

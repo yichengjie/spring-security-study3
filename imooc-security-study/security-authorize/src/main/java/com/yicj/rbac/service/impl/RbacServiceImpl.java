@@ -1,6 +1,6 @@
-package com.yicj.authorize.service.impl;
+package com.yicj.rbac.service.impl;
 
-import com.yicj.authorize.service.RbacService;
+import com.yicj.rbac.service.RbacService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -31,7 +31,6 @@ public class RbacServiceImpl implements RbacService {
 				}
 			}
 		}
-
 		return hasPermission;
 	}
 

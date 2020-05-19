@@ -11,9 +11,8 @@ import org.springframework.stereotype.Component;
 public class MyAuthorizeConfigProvider implements AuthorizeConfigProvider {
     @Override
     public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
-//        config.antMatchers("/admin/api/**")
-//                .hasRole("ADMIN") ;
-        config.anyRequest().access("@rbacService.hasPermission(request,authentication)") ;
-        return true;
+        //config.antMatchers("/admin/api/**")
+        //      .hasRole("ADMIN") ;
+        return false;
     }
 }
