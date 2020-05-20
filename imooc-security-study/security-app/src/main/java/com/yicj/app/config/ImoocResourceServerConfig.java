@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 @Configuration
 @EnableResourceServer
@@ -24,6 +25,8 @@ public class ImoocResourceServerConfig  extends ResourceServerConfigurerAdapter 
     private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig ;
     @Autowired
     private ValidateCodeSecurityConfig validateCodeSecurityConfig ;
+    @Autowired
+    private SpringSocialConfigurer imoocSocialSecurityConfigurer ;
     @Autowired
     private AuthenticationFailureHandler myAuthenticationFailureHandler ;
     @Autowired
@@ -45,11 +48,13 @@ public class ImoocResourceServerConfig  extends ResourceServerConfigurerAdapter 
                 .failureHandler(myAuthenticationFailureHandler)
                 .permitAll()
                 .and()
+            //图形验证相关配置
+            .apply(validateCodeSecurityConfig)
+                .and()
             //短信验证相关配置
             .apply(smsCodeAuthenticationSecurityConfig)
                 .and()
-            //图形验证相关配置
-            .apply(validateCodeSecurityConfig)
+            .apply(imoocSocialSecurityConfigurer)
                 .and()
             .apply(openIdAuthenticationSecurityConfig)
                 .and()

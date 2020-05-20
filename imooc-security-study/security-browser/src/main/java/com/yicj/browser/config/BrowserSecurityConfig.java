@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -22,6 +23,8 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
     private ValidateCodeSecurityConfig validateCodeSecurityConfig ;
     @Autowired
     private AuthorizeConfigManager authorizeConfigManager ;
+    @Autowired
+    private SpringSocialConfigurer imoocSocialSecurityConfigurer ;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -29,11 +32,13 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
         applyPasswordAuthenticationConfig(http);
         //其他配置
         http
+            //图形验证相关配置
+            .apply(validateCodeSecurityConfig)
+                .and()
             //短信验证相关配置
             .apply(smsCodeAuthenticationSecurityConfig)
                 .and()
-            //图形验证相关配置
-            .apply(validateCodeSecurityConfig)
+            .apply(imoocSocialSecurityConfigurer)
                 .and()
             .csrf().disable() ;
         authorizeConfigManager.config(http.authorizeRequests());
