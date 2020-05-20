@@ -13,6 +13,7 @@ public class MyAuthorizeConfigProvider implements AuthorizeConfigProvider {
     public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
         //config.antMatchers("/admin/api/**")
         //      .hasRole("ADMIN") ;
+        config.antMatchers("/user/regist").permitAll() ;
         return false;
     }
 }

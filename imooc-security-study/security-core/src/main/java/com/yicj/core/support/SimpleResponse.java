@@ -1,4 +1,4 @@
-package com.yicj.core.model;
+package com.yicj.core.support;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

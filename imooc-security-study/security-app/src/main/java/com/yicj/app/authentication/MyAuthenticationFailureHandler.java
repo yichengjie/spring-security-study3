@@ -1,7 +1,7 @@
 package com.yicj.app.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yicj.core.model.SimpleResponse;
+import com.yicj.core.support.SimpleResponse;
 import com.yicj.core.properties.LoginType;
 import com.yicj.core.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
