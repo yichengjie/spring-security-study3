@@ -8,7 +8,6 @@ public class BrowserProperties {
     private String loginPage ="/imooc-signIn.html";
     //登录类型
     private LoginType loginType = LoginType.JOSN ;
-
     /**
      * 社交登录，如果需要用户注册，跳转的页面
      */

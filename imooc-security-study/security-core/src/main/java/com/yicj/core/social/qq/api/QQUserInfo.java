@@ -1,5 +1,6 @@
 package com.yicj.core.social.qq.api;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ import lombok.Data;
  * @version 产品版本信息 yyyy-mm-dd 姓名(邮箱) 修改信息
  */
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class QQUserInfo {
 
     private String nickname ;

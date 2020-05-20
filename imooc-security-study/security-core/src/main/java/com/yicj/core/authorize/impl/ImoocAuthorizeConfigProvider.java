@@ -23,7 +23,8 @@ public class ImoocAuthorizeConfigProvider implements AuthorizeConfigProvider {
 		// 登录页面，和验证码页面不需要权限验证
 	    config.antMatchers(
 	    		securityProperties.getBrowser().getLoginPage(),
-				"/code/*")
+				"/code/*",
+				securityProperties.getBrowser().getSignUpUrl())
 			.permitAll() ;
 		return false;
 	}
