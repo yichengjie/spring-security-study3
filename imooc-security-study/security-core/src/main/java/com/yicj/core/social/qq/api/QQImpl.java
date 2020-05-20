@@ -35,7 +35,7 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
         String result = this.getRestTemplate().getForObject(url, String.class);
         log.info("response :{}",result);
         //callback( {"client_id":"YOUR_APPID","openid":"YOUR_OPENID"} );
-        this.openId = StringUtils.substringBetween(result,"\"openid\":", "}") ;
+        this.openId = StringUtils.substringBetween(result,"\"openid\":\"", "\"}") ;
     }
 
 
@@ -45,7 +45,9 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
             String url = String.format(URL_GET_USERINFO,appId,openId) ;
             String result = getRestTemplate().getForObject(url, String.class);
             log.info("response : {}", result);
-            return objectMapper.readValue(result,QQUserInfo.class) ;
+            QQUserInfo qqUserInfo = objectMapper.readValue(result, QQUserInfo.class);
+            qqUserInfo.setOpenId(openId);
+            return qqUserInfo ;
         }catch (IOException e){
             throw new RuntimeException(e) ;
         }
@@ -53,6 +55,7 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
 
     public static void main(String[] args) {
         String str = "callback( {\"client_id\":\"YOUR_APPID\",\"openid\":\"YOUR_OPENID\"} );" ;
+        //String openId = StringUtils.substringBetween(str, "\"openid\":\"", "\"}");
         String openId = StringUtils.substringBetween(str, "\"openid\":", "}");
         System.out.println(openId);
     }

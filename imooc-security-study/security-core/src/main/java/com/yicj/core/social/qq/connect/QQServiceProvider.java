@@ -3,7 +3,6 @@ package com.yicj.core.social.qq.connect;
 import com.yicj.core.social.qq.api.QQ;
 import com.yicj.core.social.qq.api.QQImpl;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
-import org.springframework.social.oauth2.OAuth2Template;
 
 /**
  * ClassName: QQServiceProvider
@@ -22,7 +21,7 @@ public class QQServiceProvider extends AbstractOAuth2ServiceProvider<QQ> {
     private String appId ;
 
     public QQServiceProvider(String appId, String appSecret) {
-        super(new OAuth2Template(appId, appSecret, URL_AUTHORIZE, URL_ACCESSTOKEN));
+        super(new QQOAuth2Template(appId, appSecret, URL_AUTHORIZE, URL_ACCESSTOKEN));
         this.appId = appId ;
     }
 
