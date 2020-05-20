@@ -14,5 +14,8 @@ import lombok.Data;
 @Data
 public class SocialProperties {
 
+    //社交登录默认拦截地址
+    private String filterProcessesUrl = "/auth";
+
     private QQProperties qq = new QQProperties() ;
 }

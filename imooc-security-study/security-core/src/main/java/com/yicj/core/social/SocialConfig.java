@@ -1,5 +1,6 @@
 package com.yicj.core.social;
 
+import com.yicj.core.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,8 @@ public class SocialConfig extends SocialConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private SecurityProperties securityProperties ;
 
     @Override
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
@@ -31,6 +34,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
      */
     @Bean
     public SpringSocialConfigurer imoocSocialSecurityConfigurer(){
-        return new SpringSocialConfigurer() ;
+        String filterProcessesUrl = securityProperties.getSocial().getFilterProcessesUrl();
+        return new ImoocSpringSocialConfigurer(filterProcessesUrl) ;
     }
 }
