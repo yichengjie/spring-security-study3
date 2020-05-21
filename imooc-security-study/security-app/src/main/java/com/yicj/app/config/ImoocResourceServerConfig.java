@@ -1,6 +1,7 @@
 package com.yicj.app.config;
 
 import com.yicj.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
+import com.yicj.core.authentication.FormAuthenticationConfig;
 import com.yicj.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.yicj.core.authorize.AuthorizeConfigManager;
 import com.yicj.core.properties.SecurityConstants;
@@ -38,18 +39,16 @@ public class ImoocResourceServerConfig  extends ResourceServerConfigurerAdapter 
     @Autowired
     private AuthorizeConfigManager authorizeConfigManager ;
 
+    @Autowired
+    private FormAuthenticationConfig formAuthenticationConfig ;
+
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
-                .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
-                .loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)
-                .successHandler(myAuthenticationSuccessHandler)
-                .failureHandler(myAuthenticationFailureHandler)
-                .permitAll()
-                .and()
-            //图形验证相关配置
-            .apply(validateCodeSecurityConfig)
+        // 表单登录配置
+        formAuthenticationConfig.configure(http);
+
+        http.apply(validateCodeSecurityConfig)
                 .and()
             //短信验证相关配置
             .apply(smsCodeAuthenticationSecurityConfig)
