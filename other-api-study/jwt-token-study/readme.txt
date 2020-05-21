@@ -1,0 +1,2 @@
+1. 当用登录成功以后生成jwt的token，并返回给客户单，客户端保存
+2. 客户端访问其他资源时在header携带token，后台被AuthenticationTokenFilter过滤器拦截，并校验token合法性。

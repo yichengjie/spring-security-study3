@@ -1,10 +1,8 @@
 package com.yicj.browser.config;
 
-import com.yicj.core.authentication.AbstractChannelSecurityConfig;
 import com.yicj.core.authentication.FormAuthenticationConfig;
 import com.yicj.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.yicj.core.authorize.AuthorizeConfigManager;
-import com.yicj.core.properties.SecurityProperties;
 import com.yicj.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

@@ -19,8 +19,6 @@ public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
         if (user == null){
             throw new InternalAuthenticationServiceException("无法获取用户信息") ;
         }
-
-
         SmsCodeAuthenticationToken token = new SmsCodeAuthenticationToken(user,user.getAuthorities()) ;
         token.setDetails(authentication.getDetails());
         return token;

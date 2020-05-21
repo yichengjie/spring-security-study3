@@ -24,10 +24,6 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
     @Autowired
     private UserDetailsService userDetailsService ;
 
-    @Autowired
-    private SecurityProperties securityProperties ;
-
-
     @Override
     public void configure(HttpSecurity http) throws Exception {
         //1. 实例化并配置filter
@@ -39,12 +35,12 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
         smsAuthenticationFilter.setAuthenticationFailureHandler(authenticationFailureHandler);
 
         //2. AuthenticationProvider实例化并配置
-        SmsCodeAuthenticationProvider smsAuthenticationprovider = new SmsCodeAuthenticationProvider() ;
+        SmsCodeAuthenticationProvider smsAuthenticationProvider = new SmsCodeAuthenticationProvider() ;
         //  2.1 配置userDetailsService
-        smsAuthenticationprovider.setUserDetailsService(userDetailsService);
+        smsAuthenticationProvider.setUserDetailsService(userDetailsService);
 
         //2. 将provider加入到AuthenticationManager管理的Provider集合中
-        http.authenticationProvider(smsAuthenticationprovider) ;
+        http.authenticationProvider(smsAuthenticationProvider) ;
         //3. 将smsFilter加入到UsernamePasswordAuthenticationFilter后面
         http.addFilterAfter(smsAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) ;
     }

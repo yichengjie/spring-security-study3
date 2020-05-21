@@ -18,6 +18,7 @@
         <module>redis-study</module>
         <module>static-study</module>
         <module>remember-study</module>
+        <module>jwt-token-study</module>
     </modules>
 
 
@@ -32,6 +33,13 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
