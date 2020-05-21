@@ -1,4 +1,4 @@
-package com.yicj.core.social.qq.api;
+package com.yicj.core.social.qq.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

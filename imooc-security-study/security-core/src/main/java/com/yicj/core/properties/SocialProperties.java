@@ -16,6 +16,8 @@ public class SocialProperties {
 
     //社交登录默认拦截地址
     private String filterProcessesUrl = "/auth";
-
+    //qq登录
     private QQProperties qq = new QQProperties() ;
+    //微信登录
+    private WeiXinProperties weixin = new WeiXinProperties();
 }

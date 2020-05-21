@@ -1,6 +1,7 @@
 package com.yicj.core.social.qq.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yicj.core.social.qq.model.QQUserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;

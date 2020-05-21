@@ -1,7 +1,7 @@
 package com.yicj.core.social.qq.connect;
 
 import com.yicj.core.social.qq.api.QQ;
-import com.yicj.core.social.qq.api.QQUserInfo;
+import com.yicj.core.social.qq.model.QQUserInfo;
 import org.springframework.social.connect.ApiAdapter;
 import org.springframework.social.connect.ConnectionValues;
 import org.springframework.social.connect.UserProfile;

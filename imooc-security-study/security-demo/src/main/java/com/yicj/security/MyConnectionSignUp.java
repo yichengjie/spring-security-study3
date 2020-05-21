@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * 修改记录
  * @version 产品版本信息 yyyy-mm-dd 姓名(邮箱) 修改信息
  */
-@Component
+//@Component
 public class MyConnectionSignUp implements ConnectionSignUp {
     @Override
     public String execute(Connection<?> connection) {
