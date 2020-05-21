@@ -2,6 +2,7 @@ package com.yicj.core.social.weixin.config;
 
 import com.yicj.core.properties.SecurityProperties;
 import com.yicj.core.properties.WeiXinProperties;
+import com.yicj.core.social.view.ImoocConnectView;
 import com.yicj.core.social.weixin.connect.WeiXinConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -12,11 +13,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.social.config.annotation.ConnectionFactoryConfigurer;
 import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.ConnectionFactory;
+import org.springframework.web.servlet.View;
 
 // 微信登录配置
 @Configuration
 @ConditionalOnProperty(prefix = "imooc.security.social.weixin", name = "app-id")
-public class WeixinAutoConfiguration extends SocialConfigurerAdapter {
+public class WeiXinAutoConfiguration extends SocialConfigurerAdapter {
 
 	@Autowired
 	private SecurityProperties securityProperties;
@@ -33,5 +35,13 @@ public class WeixinAutoConfiguration extends SocialConfigurerAdapter {
 		return new WeiXinConnectionFactory(weiXinConfig.getProviderId(), weiXinConfig.getAppId(),
 				weiXinConfig.getAppSecret());
 	}
+
+
+	@Bean({"connect/weixinConnect", "connect/weixinConnected"})
+	@ConditionalOnMissingBean(name = "weixinConnectedView")
+	public View weixinConnectedView() {
+		return new ImoocConnectView();
+	}
+
 
 }
