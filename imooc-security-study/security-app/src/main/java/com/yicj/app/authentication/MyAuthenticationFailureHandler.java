@@ -33,7 +33,6 @@ public class MyAuthenticationFailureHandler extends SimpleUrlAuthenticationFailu
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().write(content);
-
         }else {
             super.onAuthenticationFailure(request,response,ex);
         }
