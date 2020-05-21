@@ -21,8 +21,6 @@ public interface SecurityConstants {
 	 */
 	String DEFAULT_UNAUTHENTICATION_URL = "/authentication/require";
 
-
-
 	/**
 	 * 默认的用户名密码登录请求处理url
 	 */
@@ -36,10 +34,6 @@ public interface SecurityConstants {
 	 */
 	String DEFAULT_SIGN_IN_PROCESSING_URL_OPENID = "/authentication/openid";
 
-	/**
-	 * 默认登录页面
-	 */
-	String DEFAULT_LOGIN_PAGE_URL = "/imooc-signIn.html";
 	/**
 	 * 验证图片验证码时，http请求中默认的携带图片验证码信息的参数的名称
 	 */
