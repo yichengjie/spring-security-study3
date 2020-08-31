@@ -3,7 +3,8 @@ package com.yicj.study.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yicj.study.entity.QQUserInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -104,7 +105,7 @@ public class HelloOauthController {
         //callback( {"client_id":"100550231","openid":"A1DC7A0D50010C510BE686794EE766DA"} );
         ret = StringUtils.substringBetween(ret,"(" ,")") ;
         ret = ret.trim() ;
-        Map map = objectMapper.readValue(ret, Map.class);
+        Map<String,String> map = objectMapper.readValue(ret, Map.class);
         log.info("ret msg : {}", map);
         return map ;
     }
