@@ -6,5 +6,5 @@ CREATE TABLE sys_role_user(
 
 CREATE TABLE Sys_permission_role(
   role_id INT ,
-  permission_id INT ,\
+  permission_id INT ,
 ) ;

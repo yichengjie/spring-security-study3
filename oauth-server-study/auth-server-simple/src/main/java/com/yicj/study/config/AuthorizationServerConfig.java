@@ -52,7 +52,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             .secret(passwordEncoder.encode("client-for-server"))
             //该client支持的授权模式。OAuth的client在请求code时，
             //只有传递授权模式参数，该处包含的授权模式才可以访问
-            .authorizedGrantTypes("authorization_code","implicit")
+            .authorizedGrantTypes("authorization_code","implicit","password","client_credentials","refresh_token")
             // 该client分配的access_token的有效时间要少于刷新时间
             .accessTokenValiditySeconds(7200)
             //该client分配的access_token的可刷新时间要多于有效时间
@@ -83,4 +83,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         super.configure(endpoints);
     }
+
 }

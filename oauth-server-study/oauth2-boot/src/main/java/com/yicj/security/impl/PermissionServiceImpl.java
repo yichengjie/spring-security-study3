@@ -32,7 +32,7 @@ public class PermissionServiceImpl implements PermissionService {
                 "        from Sys_User u\n" +
                 "        LEFT JOIN sys_role_user sru on u.id= sru.Sys_User_id\n" +
                 "        LEFT JOIN Sys_Role r on sru.Sys_Role_id=r.id\n" +
-                "        LEFT JOIN Sys_permission_role spr on spr.role_id=r.id\n" +
+                "        LEFT JOIN sys_permission_role spr on spr.role_id=r.id\n" +
                 "        LEFT JOIN Sys_permission p on p.id =spr.permission_id\n" +
                 "        where u.id="+userId).getResultList();
         for (Object[] abc : abcs) {
