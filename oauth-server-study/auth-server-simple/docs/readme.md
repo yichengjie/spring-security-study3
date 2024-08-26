@@ -22,4 +22,6 @@
     ```text
      AuthorizationCodeTokenGranter
      DefaultTokenService#createAccessToken(this.getOAuth2Authentication(client, tokenRequest))
+     RandomValueAuthorizationCodeServices#consumeAuthorizationCode
+     用户登录成功之后又重定向回: /oauth/authorize， 生成code并与用户登录信息绑定
     ```
