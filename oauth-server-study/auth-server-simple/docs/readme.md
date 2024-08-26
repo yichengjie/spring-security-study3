@@ -27,14 +27,14 @@
      用户登录成功之后又重定向回: /oauth/authorize， 生成code并与用户登录信息绑定
      AuthorizationEndpoint
      AuthorizationServerEndpointsConfigurer#tokenGranter
+     TokenGranter -> CompositeTokenGranter
     ```
 4. AuthorizationServerEndpointsConfigurer
-```text
-a. 实例化 AuthorizationEndpoint
-b. 实例化 TokenEndpoint
-c. 实例化 CheckTokenEndpoint
-
-```
+   ```text
+   a. 实例化 AuthorizationEndpoint
+   b. 实例化 TokenEndpoint
+   c. 实例化 CheckTokenEndpoint
+   ```
 5. 
 ### 密码模式
 1. 获取token：
@@ -45,4 +45,4 @@ c. 实例化 CheckTokenEndpoint
      password=PASSWORD&
      client_id=CLIENT_ID
    ```
-2. 
+2. 待看博客：https://blog.csdn.net/zhang_ming_xuan/article/details/95176833
