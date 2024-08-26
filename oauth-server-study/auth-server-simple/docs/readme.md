@@ -18,3 +18,8 @@
         username: client-for-server
         password: client-for-server
     ```
+3. 流程：
+    ```text
+     AuthorizationCodeTokenGranter
+     DefaultTokenService#createAccessToken(this.getOAuth2Authentication(client, tokenRequest))
+    ```
