@@ -28,6 +28,7 @@
      AuthorizationEndpoint
      AuthorizationServerEndpointsConfigurer#tokenGranter
      TokenGranter -> CompositeTokenGranter
+
     ```
 4. AuthorizationServerEndpointsConfigurer
    ```text
