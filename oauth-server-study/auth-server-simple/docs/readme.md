@@ -28,7 +28,7 @@
      AuthorizationEndpoint
      AuthorizationServerEndpointsConfigurer#tokenGranter
      TokenGranter -> CompositeTokenGranter
-
+    
     ```
 4. AuthorizationServerEndpointsConfigurer
    ```text
@@ -36,7 +36,11 @@
    b. 实例化 TokenEndpoint
    c. 实例化 CheckTokenEndpoint
    ```
-5. 
+5. OAuth2 Client
+   ```text
+   OAuth2AuthorizationRequestRedirectFilter
+   OAuth2LoginAuthenticationFilter
+   ```
 ### 密码模式
 1. 获取token：
    ```text
