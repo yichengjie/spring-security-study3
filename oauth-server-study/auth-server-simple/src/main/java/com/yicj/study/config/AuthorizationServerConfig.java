@@ -6,16 +6,24 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
+import org.springframework.security.oauth2.common.util.OAuth2Utils;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.OAuth2Request;
 import org.springframework.security.oauth2.provider.password.ResourceOwnerPasswordTokenGranter;
+import org.springframework.security.oauth2.provider.token.DefaultAuthenticationKeyGenerator;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeSet;
 
 @Profile("simple")
 @Configuration
@@ -92,7 +100,34 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         // 启用password模式认证
         endpoints.authenticationManager(authenticationManager)  ;
         endpoints.tokenEnhancer(accessTokenEnhancer()) ;
+        endpoints.tokenStore(tokenStore()) ;
     }
+
+    private TokenStore tokenStore(){
+        InMemoryTokenStore tokenStore = new InMemoryTokenStore();
+        tokenStore.setAuthenticationKeyGenerator(new DefaultAuthenticationKeyGenerator(){
+            private static final String CLIENT_ID = "client_id";
+            private static final String SCOPE = "scope";
+            private static final String USERNAME = "username";
+
+            @Override
+            public String extractKey(OAuth2Authentication authentication) {
+                Map<String, String> values = new LinkedHashMap<String, String>();
+                OAuth2Request authorizationRequest = authentication.getOAuth2Request();
+                if (!authentication.isClientOnly()) {
+                    values.put(USERNAME, authentication.getName() + System.currentTimeMillis());
+                }
+                values.put(CLIENT_ID, authorizationRequest.getClientId());
+                if (authorizationRequest.getScope() != null) {
+                    values.put(SCOPE, OAuth2Utils.formatParameterList(new TreeSet<String>(authorizationRequest.getScope())));
+                }
+                return generateKey(values);
+            }
+        });
+        return tokenStore ;
+    }
+
+
 
     private TokenEnhancer accessTokenEnhancer(){
         //OAuth2AccessToken token, OAuth2Authentication authentication
