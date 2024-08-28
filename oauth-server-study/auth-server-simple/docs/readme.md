@@ -28,7 +28,10 @@
      AuthorizationEndpoint
      AuthorizationServerEndpointsConfigurer#tokenGranter
      TokenGranter -> CompositeTokenGranter
-    
+     DefaultTokenServices#createAccessToken
+     OAuth2AuthenticationProcessingFilter#doFilter
+     OAuth2AuthenticationDetailsSource#buildDetails
+     OAuth2AuthenticationManager#authenticate
     ```
 4. AuthorizationServerEndpointsConfigurer
    ```text
@@ -40,6 +43,7 @@
    ```text
    OAuth2AuthorizationRequestRedirectFilter
    OAuth2LoginAuthenticationFilter
+
    ```
 ### 密码模式
 1. 获取token：

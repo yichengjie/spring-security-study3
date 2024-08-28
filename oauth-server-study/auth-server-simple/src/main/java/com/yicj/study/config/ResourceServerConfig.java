@@ -1,14 +1,22 @@
 package com.yicj.study.config;
 
 
+import com.yicj.study.model.CustomOAuth2AuthenticationDetails;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetailsSource;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 资源服务器的职责是对来自OAuth客户端的access_token进行鉴权。一个资源服务器包含多个端点(接口),
@@ -27,7 +35,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         super.configure(resources);
-        resources.resourceId(RESOURCE_ID) ;
+        resources.resourceId(RESOURCE_ID);
+        resources.authenticationDetailsSource(authenticationDetailsSource()) ;
     }
 
 
@@ -39,5 +48,20 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             .and()
             .authorizeRequests()
             .anyRequest().authenticated() ;
+    }
+
+    private AuthenticationDetailsSource<HttpServletRequest, OAuth2AuthenticationDetails> authenticationDetailsSource(){
+        return new OAuth2AuthenticationDetailsSource(){
+            @Override
+            public OAuth2AuthenticationDetails buildDetails(HttpServletRequest context) {
+                CustomOAuth2AuthenticationDetails details = new CustomOAuth2AuthenticationDetails(context);
+                String tokenValue = details.getTokenValue();
+                // 根据token value 从redis中获取用户信息
+                details.setAuthor("yicj");
+                details.setAddress("BJS");
+                details.setOrganization("developer");
+                return details ;
+            }
+        } ;
     }
 }
