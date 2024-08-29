@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetailsSource;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,6 +38,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         super.configure(resources);
         resources.resourceId(RESOURCE_ID);
         resources.authenticationDetailsSource(authenticationDetailsSource()) ;
+        resources.tokenStore(new InMemoryTokenStore(){
+
+        }) ;
     }
 
 
